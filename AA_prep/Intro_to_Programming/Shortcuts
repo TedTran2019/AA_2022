@@ -1,0 +1,64 @@
+Mac Shortcuts
+---------------
+CMD CONTROL F to full screen/exit full screen
+CMD + tab  to cycle through windows
+3 fingers up for mission control, 3 fingers right/left for switching workspaces
+Select current line depending on where you are: CMD Shift <-or ->
+Select all Text: CMD A
+
+VSCode
+-------
+Ctrl-1, Ctrl-2, etc to swap tabs
+CMD-1, CMD-2, etc to swap btwn split editors
+CMD \ to split editor
+CMD B to hide/open explorer
+ctrl + tab to switch between last opened files
+CMD up/down/left/right arrow keys for full jump
+OPTION left/right to jump by word
+CMD SHIFT P to open up preferences
+CMD-Shift-E to navigate explorer, CMD down arrow to open file (Or spacebar)
+CMD + 0 -> activity bar 
+CMD + 1 -> opened file 
+CMD + J -> show terminal
+CMD + Shift + O to jump between symbols
+The obvious CMD + F
+CMD W to close window
+CMD P to search for files, CMD SHIFT F to search inside of project
+CMD SHIFT Z to redo, CMD Z to undo
+
+Terminal 
+---------
+
+Google Chrome 
+--------------
+Close tab: CMD W
+Open new tab: CMD T
+Move between tabs: CMD OPT <- ->
+New window: CMD N
+Jump to specific tab: CMD #
+Reopen closed tabs: CMD SHIFT T
+Back or forward pages: CMD <- ->
+
+Extensions
+-----------
+akamud.vscode-theme-onedark@2.2.3
+aki77.rails-db-schema@0.2.3
+aliariff.vscode-erb-beautify@0.2.0
+castwide.solargraph@0.23.0
+CoenraadS.bracket-pair-colorizer-2@0.2.1
+formulahendry.auto-rename-tag@0.1.6
+IBM.output-colorizer@0.1.2
+kaiwood.endwise@1.4.2
+mikestead.dotenv@1.0.1
+misogi.ruby-rubocop@0.8.5
+ms-vsliveshare.vsliveshare@1.0.4419
+ms-vsliveshare.vsliveshare-audio@0.1.91
+ms-vsliveshare.vsliveshare-pack@0.4.0
+msjsdiag.debugger-for-chrome@4.12.12
+rayhanw.erb-helpers@0.5.0
+rebornix.ruby@0.28.1
+RoscoP.ActiveFileInStatusBar@1.0.3
+vincaslt.highlight-matching-tag@0.10.0
+vscode-icons-team.vscode-icons@11.5.0
+wingrunr21.vscode-ruby@0.28.0
+ZneuRay.erb-vscode-snippets@0.0.4

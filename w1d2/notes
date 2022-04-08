@@ -1,0 +1,9 @@
+References, Immutable, Mutable, Pointers
+Hash/Array Defaults
+Scope
+DRY, Method Design, !
+Refactor: Law of Demeter, YAGNI, etc
+VScode Shortcuts: cmd click
+
+Equality in Ruby and using an obj as key in hash
+1. define #hash and #eql

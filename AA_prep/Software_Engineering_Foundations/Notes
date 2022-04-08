@@ -1,0 +1,129 @@
+Stack: RoR, Js, React, Redux, PostgresSQL
+Terminal: ls, cd (.. ~ ), mv, mkdir, 
+rubocop -a for safe auto-correct, -A for unsafe
+
+Ruby Shortcuts:
+    1. Implicit Returns 
+    2. Omit parentheses for method calls w/ no args
+    3. Single line conditionals
+    4. Built-in methods 
+    5. Enumerables 
+        a. all?
+        b. any?
+        c. none? 
+        d. one?
+        e. count 
+        f. sum 
+        g. max / min 
+        h. flatten
+    6. Default args - include default value so optional to pass value in 
+    7. When passing in a hash to an argument, can omit braces
+    8. No need for tmp variable-- can do a, b = b, a
+
+Symbols: :hello, immutable, often used as key in a hash
+object_id method to see memory address
+
+Splat Operator: 
+    1. Additional arguments passed into array if put into method def
+    2. Decompose an array 
+    3. Double splat can decompose a hash (Only work where keys are symbols)
+
+Inject: Accepts accumulator and current element, result of block becomes accumulator 
+
+Sorting Algorithms
+  1. Bubble Sort - Left to right, swap if out of order, repeat until sorted
+
+Scope - Where a variable is accessible
+  1. Local Scope
+  2. Global Scope - $ to create a global variable
+    a. Some built-in globals: $PROGRAM_NAME, $stdin, $stdout
+    b. Constants - All capital. Cannot be reassigned, but can be mutated. Accessible 
+       in global scope
+  3. Blocks don't have their own scope, part of containing method's scope
+  4. Conditionals, while loops, etc also don't have their own scope
+
+Variable References - Essentially think about memory addresses, pointers, etc 
+  1. Example - Array.new(3), 3 nil values. 
+    a. Array.new(3, "?"), 3 question marks in Array 
+    b. Array.new(3, []), DANGEROUS, because all the arrays have the same mem address
+    c. Array.new(3) { Array.new(3) } -> Block evaluates 3 times, creating 3 sep arrays
+    
+TDD - Test Driven Development
+New test -> Fail -> Change method -> Pass
+
+RSpec
+  1. Structure -> lib and spec folders.
+    a. in lib: add.rb, in spec: add_spec.rb
+  2. Fundamental keywords: describe, it, expect, context
+  3. Global RSpec file w/ documentation: 
+    a. --color, --format documentation, --no-fail-fast
+
+Exceptions 
+  1. Handling exceptions! -> begin...rescue
+  2. Common -> ZeroDivision, Argument, Name, NoMethod, Index, Type
+  3. Raising exceptions -> raise
+    a. instance_of? seems like a very useful method
+
+Random: 
+  1. << vs += for concatenation. << modifies orig. string while += doesn't 
+  2. between? is a useful method
+  3. Regex -> match method seems very useful
+
+REPL - Read Evaluate Print Loop 
+1. Pry
+  a. ls - list methods, ex. ls String
+  b. show-doc, ex. show-doc String#end_with?
+  c. load, ex. load "cobe.rb"
+  d. show-source method
+
+Byebug
+1. require "byebug"
+2. debugger where you'd like to begin debugger
+3. methods 
+  a. step s - step into method call on current line 
+  b. next n - next line of code 
+  c. break b - pause execution, creates a breakpoint
+  d. continue c - continue until breakpoint
+  e. display <var> - show current value of a variable
+
+Common Errors
+1. Missing end 
+2. SyntaxError
+3. NameError
+4. NoMethodError
+5. ArgumentError
+6. TypeError
+
+De Morgan's Law
+1. !(A || B) = !A && !B
+-------------------------------------------------------------------------
+Minimize notes. 
+1. Utilize mindmaps for complex ideas
+2. Only take regular notes on "lists", aka info that can only be memorized.
+3. Delay notetaking and focus on applying, connecting, evaluating, etc.
+4. Only jot down useful information. 
+--------------------------------------------------------------------------------------------
+Ex. of shortcut: 
+["a", "b", "c"].map { |str| str.upcase } 
+["a", "b", "c"].map(&:upcase)
+
+Proc: object that contains block (save blocks to variables). Wrapper around a block
+Proc.new, Proc.call
+&proc_arg to convert block into proc
+& can also be used to convert proc into block
+
+class Cat, initialize, Cat.new, instance vs class vars/methods
+(@, @@, self.method_name, CLASS_CONSTANT, #, ::), getters/setters
+
+Monkey Patching
+require_relative, require
+gets, chomp
+
+OOP: abstraction, encapsulation
+attr reader, writer, accessor
+Syntactic Sugar: +, ==, >, [], []=
+Recursion: base and step
+
+Spaceship <=> Operator
+Truthy and Falsey
+||= 

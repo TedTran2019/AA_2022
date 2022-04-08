@@ -1,0 +1,35 @@
+require_relative 'board'
+require_relative 'human_player'
+require_relative 'computer_player'
+
+class Game
+  attr_reader :current_player
+
+  def initialize(board_size, marks_hash)
+    @players = []
+    marks_hash.each { |k, v| @players << (v ? ComputerPlayer.new(k) : HumanPlayer.new(k))}
+    @board = Board.new(board_size)
+    @current_player = 0
+  end
+
+  def switch_turn
+    @current_player = (@current_player + 1) % @players.length
+  end
+
+  def play
+    while @board.empty_positions?
+      @board.print_board
+      mark = @players[current_player].mark
+      pos = @players[@current_player].get_position(@board.legal_positions)
+      @board.place_mark(pos, mark)
+      if @board.win?(mark)
+        @board.print_board
+        puts "#{mark} has won!"
+        return true
+      end
+      switch_turn
+    end
+    @board.print_board
+    puts "Draw game!"
+  end
+end

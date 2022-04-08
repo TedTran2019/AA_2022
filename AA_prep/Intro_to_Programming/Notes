@@ -1,0 +1,118 @@
+https://open.appacademy.io/learn/full-stack-online/ruby/setting-up-a-development-environment--phase-1-
+
+1. Install: xcode, homebrew, Google Chrome, VS Code
+2. Install git + configure color, username, email
+3. Useful VS Code Extensions
+    a. https://betterprogramming.pub/vs-code-extensions-for-ruby-on-rails-developers-917474e03e04
+        * installed Rubocop and solargraph gems
+    b. Not using Atom Keybindings
+    c. Path installation removed after terminal closed, adding it manually.
+4. Rbenv + Ruby (2.5.1) + Latest (3.0.1)
+    a. Prefer zsh over bash, meaning commands will be different
+        - #!/bin/bash to #!/bin/zsh
+        - https://scriptingosx.com/2019/08/moving-to-zsh-part-8-scripting-zsh/
+        -.zshrc and .zprofile
+5. Gems -> Bundler, Pry, Byebug
+6. PostgreSQL + SQLite
+7. Ruby on Rails
+    a. version 5.2.3 and 6.1.3.2
+        - Installing Ruby 3.0.1 w/ Rails 6.1.3.2 encountered no problems
+        - Ruby 2.5.1 w/ Rails 5.2.3 had issues
+            * brew install shared-mime-info
+            * sudo gem install rails -v 5.2.3
+8. Node.js + NVM
+    1. NVM (ver 0.38.0)
+        a. Issue with zsh "insecure directories". These directories output by compaudit
+            have write permission by group or others, or files owned by someone else other
+            than root or yourself. 
+            - Use chmod to remove said permissions. 
+                * compaudit 
+                * chmod g-w /usr/local/share/zsh 
+                * chmod g-w /usr/local/share/zsh/site-functions 
+    2. Node.js (ver 10.13.0) and (v 16.3.0)
+
+Look into: 
+    * Basic documentation for homebrew, git, rbenv, nvm
+    * Documentation for gems-- bundler, pry, Byebug
+    * Learn how to use PostgreSQL, SQLite, zsh scripting, terminal commands
+    * Learn zsh, Mac, and VSC shortcuts 
+    * Customize VSC 
+
+Cheatsheets for Mac, Terminal, and VSCode Shortcuts/Commands
+-------------------------------------------------------------
+https://support.apple.com/guide/terminal/keyboard-shortcuts-trmlshtcts/mac
+https://support.apple.com/en-us/HT201236
+https://www.makeuseof.com/tag/mac-terminal-commands-cheat-sheet/
+https://github.com/0nn0/terminal-mac-cheatsheet
+https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
+** Print out cheatsheets and minimize mouse usage ** 
+
+AA - Intro to Programming
+--------------------------
+"cmd /" to multiple comment
+If decimal result wanted, use decimal input. 
+Regular order of operations
+Modulo %, remainder 
+Comparison operators 
+Boolean Operators, including XOR(^)
+
+puts - displays object, adds newline, to_s method
+print - displays object, to_s method
+p - displays raw object for debugging, adds newline, inspect method
+
+String operations and indexing
+Variables
+Shortcuts: +=, -=, /=, *=, etc
+Methods 
+    a. Conventions
+        - No parentheses when no parameters
+        - No need for return usually, as Ruby returns the value from the last 
+            evaluated statement. 
+Definition of variable, parameter, arguments
+Conditionals (if/elsif/else)
+    a. Conditional shortcut: boolean ? 1 : 2
+    b. unless, single lined if
+Loops (while, break, next)
+Arrays
+    a. Operators: Shovel (<<) 
+    b. shift, unshift, pop, push
+    c. index, include?
+    d. reverse, reverse! (Ruby convention ! for modifying current object)
+    e. Slicing: [..] Inclusive, and [...] Exclusive. 
+    f. Negative Indices in Ruby! 
+    g. Split evluates to array, Join evaluates to String
+    h. concat 
+Whitespace characters: \n, \t, etc
+
+Enumerables: 
+Array: .each, .each_with_index, map, step, each_slice, select, inject, reverse_each
+String: .each_char .each_char.with_index
+Integer: downto, times
+Single line: { |ele| puts ele }
+Multi:  do |ele| 
+
+Range: (num..num) Inclusive or (num...num) Exclusive
+String object method: upcase, downcase, ord
+Useful Methods: is_a? 
+
+Two-dimensional Arrays
+    a. [][] as access
+    b. Iterating through to obtain unique pairs, each_with_index, x index > y index
+
+Hashes
+    a. {}, Hash.new
+        1. Can put Hash.new(0) for non-existent keys to eval to 0
+        2. { "key" => value}
+    b. has_key?, has_value?, keys, values, length, sort_by, to_a
+    c. each (k/v), each_key, each_value
+
+String Interpolation: "#{}"
+
+chr and ord for conversion between unicode
+index method for strings and arrays
+all?, none? are useful methods as well
+dup to prevent object mutation
+Setting string to "" to "delete" characters
+While true loop usage
+
+Basic terminal commands: mkdir, ls, cd, rm
