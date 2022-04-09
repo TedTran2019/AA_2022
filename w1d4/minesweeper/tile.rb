@@ -3,7 +3,6 @@ class Tile
 
   attr_accessor :neighbor_bomb_count
 
-  # ||= neighbor_bomb_count
   def initialize(bomb)
     @bomb = bomb
     @flag = false
@@ -23,8 +22,6 @@ class Tile
     @flag
   end
 
-  # Can't click on a flag
-  # If flag is not a bomb and gets revealed, removes flag
   def flag
     @flag = !@flag
   end
@@ -46,12 +43,14 @@ class Tile
   end
 
   def inspect
-    "B:#{bomb?},R:#{revealed?}\n"
+    "B:#{bomb?},R:#{revealed?}, N:#{neighbor_bomb_count}\n"
   end
 
   def output_revealed
     if bomb?
       'B'.colorize(:red)
+    elsif neighbor_bomb_count.zero?
+      '_'
     else
       neighbor_bomb_count.to_s.colorize(:blue)
     end

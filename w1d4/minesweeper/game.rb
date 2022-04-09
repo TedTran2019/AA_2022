@@ -3,6 +3,7 @@ require_relative 'board'
 class Game
   def initialize(size)
     @board = Board.create_board(size)
+    @lost = false
   end
 
   def play_round
@@ -15,7 +16,7 @@ class Game
   def action(flag, pos = nil)
     case flag
     when 'r'
-      @board[pos].reveal
+      reveal(pos)
     when 'f'
       @board[pos].flag
     end
@@ -28,15 +29,27 @@ class Game
   end
 
   def game_over?
-    lost? || won?
-  end
-
-  def lost?
-    @board.lost?
+    @lost || won?
   end
 
   def won?
     @board.won?
+  end
+
+  def reveal(pos)
+    return nil unless @board.between_bounds?(*pos) && !@board[pos].revealed?
+
+    @board[pos].reveal
+    @board[pos].flag if @board[pos].flagged?
+    (@lost = true) && (return nil) if @board[pos].bomb?
+    return nil unless @board[pos].neighbor_bomb_count.zero?
+
+    Board::ALL_DIRS.each do |d_pos|
+      dy, dx = d_pos
+      dy += pos[0]
+      dx += pos[1]
+      reveal([dy, dx])
+    end
   end
 
   def get_flag_input
@@ -90,6 +103,6 @@ class Game
 end
 
 if __FILE__ == $PROGRAM_NAME
-  g = Game.new(4)
+  g = Game.new(9)
   g.run
 end

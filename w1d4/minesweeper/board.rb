@@ -1,10 +1,12 @@
 require_relative 'tile'
 
-# 0 surrounding bombs == blank tile
-# otherwise number indicating number of bombs
 # if there's a bomb inside of tile, leave hidden until revealed
 # Stop revealing outwards when you reach a tile with bombs surrounding it
 class Board
+
+  ALL_DIRS = [[0, 1], [0, -1], [1, 0], [-1, 0],
+            [1, -1], [1, 1], [-1, -1], [-1, 1]].freeze
+
   def self.create_board(size)
     self.new(size)
   end
@@ -18,12 +20,36 @@ class Board
   def create_grid
     bomb_arr = create_bombs
     grid = Array.new(@size) { Array.new(@size) }
-      grid.each do |row|
-        row.each_with_index do |_el, x|
-          row[x] = Tile.new(bomb_arr.pop)
-        end
+    grid.each do |row|
+      row.each_with_index do |_el, x|
+        row[x] = Tile.new(bomb_arr.pop)
       end
+    end
+    set_neighbor_bomb_count(grid)
     grid
+  end
+
+  def set_neighbor_bomb_count(grid)
+    grid.each_with_index do |row, y|
+      row.each_with_index do |tile, x|
+        next if tile.bomb?
+
+        tile.neighbor_bomb_count = neighbor_bombs(grid, y, x)
+      end
+    end
+  end
+
+  def neighbor_bombs(grid, y, x)
+    bombs = 0
+    ALL_DIRS.each do |pos|
+      dy, dx = pos
+      dy += y
+      dx += x
+      next unless between_bounds?(dy, dx)
+
+      bombs += 1 if grid[dy][dx].bomb?
+    end
+    bombs
   end
 
   def create_bombs
@@ -58,6 +84,6 @@ class Board
   end
 
   def won?
-    @grid.all? { |row| row.all?(&:revealed?) }
+    @grid.all? { |row| row.all? { |el| el.revealed? || el.bomb? }}
   end
 end
