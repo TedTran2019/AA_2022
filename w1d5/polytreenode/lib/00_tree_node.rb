@@ -26,6 +26,10 @@ class PolyTreeNode
     end
   end
 
+  def inspect
+    {'value' => @value, 'parent_value' => (@parent.nil? ? 'nil' : @parent.value)}.inspect
+  end
+
   def dfs(target_value)
     return self if target_value == self.value
 
