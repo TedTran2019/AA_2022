@@ -1,5 +1,5 @@
 require_relative 'board'
-
+require 'yaml'
 class Game
   def initialize(size)
     @board = Board.create_board(size)
@@ -7,9 +7,10 @@ class Game
   end
 
   def play_round
+    non_play = %w[s l]
     @board.render
     flag = get_flag_input
-    pos = get_pos_input(flag)
+    pos = get_pos_input(flag) unless non_play.include?(flag)
     action(flag, pos)
   end
 
@@ -19,6 +20,25 @@ class Game
       reveal(pos)
     when 'f'
       @board[pos].flag
+    when 's'
+      save_game
+    when 'l'
+      load_game
+    end
+  end
+
+  def save_game
+    File.open('saved_games/game.yml', 'w') { |file| file.write(@board.to_yaml) }
+    puts 'Game saved!'
+  end
+
+  def load_game
+    board = YAML.load(File.read('saved_games/game.yml'))
+    if board
+      @board = board
+      puts 'Game loaded from save!'
+    else
+      puts 'No game saved! Save a game first before using load.'
     end
   end
 
@@ -73,7 +93,7 @@ class Game
   end
 
   def prompt_flag
-    puts 'Enter a flag [r, f] like this: r'
+    puts 'Enter a flag [r, f, s, l] like this: r'
   end
 
   def prompt_pos
@@ -81,13 +101,11 @@ class Game
   end
 
   def valid_flag?(flag)
-    case flag
-    when 'r'
-      true
-    when 'f'
+    valid = %w[r f s l]
+    if valid.include?(flag)
       true
     else
-      puts 'Invalid flag! Options: [r, f]'
+      puts 'Invalid flag! Options: [r, f, s, l]'
       false
     end
   end
