@@ -8,13 +8,6 @@ class Display
     @cursor = Cursor.new([0, 0], board)
   end
 
-  def test
-    while 1
-      render
-      @cursor.get_input
-    end
-  end
-
   def render
     system('clear')
     color = @cursor.selected ? :red : :green

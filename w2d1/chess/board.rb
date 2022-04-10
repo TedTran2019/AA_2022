@@ -1,7 +1,7 @@
 require_relative 'pieces/pieces'
 require_relative 'display/display'
 class Board
-  attr_reader :grid
+  attr_accessor :grid
 
   def initialize
     @grid = Array.new(8) { Array.new(8, nil) }
@@ -18,11 +18,18 @@ class Board
     self[end_pos] = piece
     self[start_pos] = NullPiece.instance
   end
-    
+
+  def move_piece!(start_pos, end_pos)
+    piece = self[start_pos]
+    piece.pos = end_pos
+    self[end_pos] = piece
+    self[start_pos] = NullPiece.instance
+  end
+
   def valid_move?(start_pos, end_pos)
     return false unless self[start_pos].space_taken?
 
-    self[start_pos].moves.include?(end_pos)
+    self[start_pos].valid_moves.include?(end_pos)
   end
 
   # A hash would be much better than an array here
@@ -42,6 +49,22 @@ class Board
     in_check?(color) && valid_moves(color).empty?
   end
 
+  def dup
+    clone = Board.new
+    @grid.each_with_index do |row, y|
+      row.each_with_index do |_el, x|
+        pos = [y, x]
+        if self[pos].class == NullPiece
+          clone[pos] = NullPiece.instance
+        else
+          clone[pos] = self[pos].dup
+          clone[pos].board = clone
+        end
+      end
+    end
+    clone
+  end
+
   def find_piece(color, piece)
     (0...8).each do |y|
       (0...8).each do |x|
@@ -50,10 +73,6 @@ class Board
       end
     end
     nil
-  end
-
-  def checkmate?(color)
-
   end
 
   def space_taken?(pos)

@@ -1,6 +1,7 @@
 require "io/console"
 
 KEYMAP = {
+  "b" => :debug,
   " " => :space,
   "h" => :left,
   "j" => :down,
@@ -32,12 +33,13 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board, :selected
+  attr_reader :cursor_pos, :board, :selected, :debug
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
     @selected = false
+    @debug = false
   end
 
   def get_input
@@ -47,6 +49,10 @@ class Cursor
 
   def toggle_selected
     @selected = !@selected
+  end
+
+  def toggle_debug
+    @debug = !@debug
   end
 
   private
@@ -89,6 +95,8 @@ class Cursor
     when :return, :space
       toggle_selected
       @cursor_pos
+    when :debug
+      toggle_debug
     end
   end
 
