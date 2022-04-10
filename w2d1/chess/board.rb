@@ -1,37 +1,31 @@
 require_relative 'pieces/pieces'
 
 class Board
-
-  def self.create_chess_board
-    pieces_row_idx = [0, 1, 6, 7]
-    grid = Array.new(8) { Array.new(8, nil) }
-    pieces_row_idx.each_with_index do |y|
-      8.times { |x| grid[y][x] = Piece.new([y, x])}
-    end
-    grid
-  end
-
   def initialize
     @grid = Array.new(8) { Array.new(8, nil) }
     populate_grid
   end
 
+  # Need a valid checker. E.g, start not empty and end is in available moves
   def move_piece(start_pos, end_pos)
-    valid_move?(start_pos, end_pos)
+    return false unless valid_move?(start_pos, end_pos)
     piece = self[start_pos]
     piece.pos = end_pos
     self[end_pos] = piece
-    self[start_pos] = nil
-  end
+    self[start_pos] = ni
+    
+    def valid_move?(start_pos, end_pos)
+      return false unless self[start_pos].space_taken?
 
-  # Handle possible moves later or NullPiece inclusion
-  def valid_move?(start_pos, end_pos)
-    raise 'Invalid Move' if self[start_pos].nil? || !self[end_pos].nil?
-  end
+      self[start_pos].moves.include?(end_pos)
+    end
 
-  # Make a space taken by same color after to deal w/ Stepable/Slideable logic
   def space_taken?(pos)
-    !self[pos].nil?
+    k.class != NullPiece
+  end
+
+  def space_open?(pos)
+    k.class == NullPiece
   end
 
   def out_of_bounds?(y, x)
@@ -49,15 +43,43 @@ class Board
   end
 
   def render
-
+    @grid.each do |row|
+      row.each { |ele| print "#{ele} " }
+      print "\n"
+    end
   end
 
   def populate_grid
+    fill_major(:white, 7)
+    fill_major(:black, 0)
+    fill_minor(:white, 6)
+    fill_minor(:black, 1)
     fill_empty
   end
 
-  def fill_black_major
+  def fill_major(color, row)
+    @grid[row].each_with_index do |_, col|
+      pos = [row, col]
+      case col
+      when 0, 7
+        self[pos] = Rook.new(pos, color, self)
+      when 1, 6
+        self[pos] = Knight.new(pos, color, self)
+      when 2, 5
+        self[pos] = Bishop.new(pos, color, self)
+      when 3
+        self[pos] = King.new(pos, color, self)
+      when 4
+        self[pos] = Queen.new(pos, color, self)
+      end
+    end
+  end
 
+  def fill_minor(color, row)
+    @grid[row].each_with_index do |_, col|
+      pos = [row, col]
+     self[pos] = Pawn.new(pos, color, self) 
+    end
   end
 
   def fill_empty

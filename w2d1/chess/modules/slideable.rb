@@ -11,6 +11,7 @@ module Slideable
       y += dx
       until invalid_spot?([y, x])
         possible_moves << [y, x]
+        break if @board.space_taken? ([y, x])
         y += dy
         x += dx
       end

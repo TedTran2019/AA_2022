@@ -1,13 +1,17 @@
 require_relative 'piece'
-require_relative 'stepable'
+require_relative '../modules/stepable'
 
 class Knight < Piece
   KNIGHT_DIRS = [[2, 1], [2, -1], [-2, -1], [-2, 1],
                 [1, 2], [-1, 2], [1, -2], [-1, -2]].freeze
   include Stepable
 
-  def initialize
+  def initialize(pos, color, board)
     super
+  end
+
+  def move_dirs
+    Knight::KNIGHT_DIRS
   end
 
   def to_s
