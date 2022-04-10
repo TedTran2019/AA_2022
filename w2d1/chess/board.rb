@@ -9,10 +9,8 @@ class Board
     @display = Display.new(self)
   end
 
-  # Once players are factored in, valid_move only takes if start_pos is same color
-  # Also factor in check into available moves later on
-  def move_piece(start_pos, end_pos)
-    return false unless valid_move?(start_pos, end_pos)
+  def move_piece(color, start_pos, end_pos)
+    valid_move?(color, start_pos, end_pos)
     piece = self[start_pos]
     piece.pos = end_pos
     self[end_pos] = piece
@@ -26,10 +24,10 @@ class Board
     self[start_pos] = NullPiece.instance
   end
 
-  def valid_move?(start_pos, end_pos)
-    return false unless self[start_pos].space_taken?
+  def valid_move?(color, start_pos, end_pos)
+    raise 'Start position has to be your piece!' unless self[start_pos].color == color
 
-    self[start_pos].valid_moves.include?(end_pos)
+    raise "You can't move there!" unless self[start_pos].valid_moves.include?(end_pos)
   end
 
   # A hash would be much better than an array here
@@ -44,9 +42,18 @@ class Board
     false
   end
 
-  # This will probably need to be fixed
   def checkmate?(color)
-    in_check?(color) && valid_moves(color).empty?
+    in_check?(color) && no_moves?(color)
+  end
+
+  def no_moves?(color)
+    @grid.each do |row|
+      row.each do |piece|
+        next unless piece.color == color
+        return false unless piece.valid_moves.empty?
+      end
+    end
+    true
   end
 
   def dup
