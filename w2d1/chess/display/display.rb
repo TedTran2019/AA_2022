@@ -11,7 +11,7 @@ class Display
   end
 
   def render
-    # system('clear')
+    system('clear')
     color = @cursor.selected ? :red : :green
     @board.grid.each_with_index do |row, y|
       row.each_with_index do |ele, x| 

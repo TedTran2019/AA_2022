@@ -23,7 +23,6 @@ class Game
   end
 
   def play
-    @board.display.render
     play_round until game_over?
     @board.display.render
   end

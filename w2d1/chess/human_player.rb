@@ -11,8 +11,8 @@ class HumanPlayer
   def make_move
     input = nil
     until input
-      input = @board.display.cursor.get_input
       @board.display.render
+      input = @board.display.cursor.get_input
     end
     input
   end
