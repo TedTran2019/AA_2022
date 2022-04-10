@@ -8,7 +8,7 @@ module Slideable
       y, x = pos
       dy, dx = d_pos
       y += dy
-      y += dx
+      x += dx
       until invalid_spot?([y, x])
         possible_moves << [y, x]
         break if @board.space_taken? ([y, x])

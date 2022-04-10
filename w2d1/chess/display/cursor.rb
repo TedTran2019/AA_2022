@@ -53,6 +53,7 @@ class Cursor
 
   def toggle_debug
     @debug = !@debug
+    nil
   end
 
   private
@@ -105,5 +106,6 @@ class Cursor
     y, x = @cursor_pos
     new_pos = [y + dy, x + dx]
     @cursor_pos = new_pos unless @board.out_of_bounds?(*new_pos)
+    nil
   end
 end

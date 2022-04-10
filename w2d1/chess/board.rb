@@ -2,6 +2,7 @@ require_relative 'pieces/pieces'
 require_relative 'display/display'
 class Board
   attr_accessor :grid
+  attr_reader :display
 
   def initialize
     @grid = Array.new(8) { Array.new(8, nil) }
@@ -26,7 +27,6 @@ class Board
 
   def valid_move?(color, start_pos, end_pos)
     raise 'Start position has to be your piece!' unless self[start_pos].color == color
-
     raise "You can't move there!" unless self[start_pos].valid_moves.include?(end_pos)
   end
 
@@ -34,7 +34,7 @@ class Board
   def in_check?(color)
     king_pos = find_piece(color, King)
     @grid.each do |row|
-      @row.each do |piece|
+      row.each do |piece|
         next if piece.color.nil?
         return true if piece.color != color && piece.moves.include?(king_pos)
       end
@@ -83,11 +83,11 @@ class Board
   end
 
   def space_taken?(pos)
-    k.class != NullPiece
+    self[pos].class != NullPiece
   end
 
   def space_open?(pos)
-    k.class == NullPiece
+    self[pos].class == NullPiece
   end
 
   def out_of_bounds?(y, x)

@@ -3,8 +3,8 @@ require_relative 'human_player'
 class Game
   def initialize
     @board = Board.new
-    @p1 = HumanPlayer.new(:white, board)
-    @p2 = HumanPlayer.new(:black, board)
+    @p1 = HumanPlayer.new(:white, @board)
+    @p2 = HumanPlayer.new(:black, @board)
     @current_player = @p1
   end
 
@@ -23,6 +23,7 @@ class Game
   end
 
   def play
+    @board.display.render
     play_round until game_over?
     @board.display.render
   end

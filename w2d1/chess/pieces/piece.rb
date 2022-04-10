@@ -15,7 +15,7 @@ class Piece
   def invalid_spot?(pos)
     @board.out_of_bounds?(*pos) || ally_piece?(pos)
   end
-
+  
   def valid_moves
     moves.reject { |move| move_into_check?(move) }
   end
@@ -31,7 +31,7 @@ class Piece
   end
 
   def enemy_piece?(pos)
-    return false if @board.space_open?
+    return false if @board.space_open?(pos)
 
     !ally_piece?(pos)
   end

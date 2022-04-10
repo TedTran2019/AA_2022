@@ -8,7 +8,9 @@ class Queen < Piece
     super
   end
 
+  require 'byebug'
   def move_dirs
+    # debugger
     Piece::DIRS + Piece::DIAG_DIRS
   end
 

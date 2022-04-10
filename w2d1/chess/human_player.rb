@@ -1,4 +1,4 @@
-require 'board'
+require_relative 'board'
 
 class HumanPlayer
   attr_reader :color
@@ -11,8 +11,9 @@ class HumanPlayer
   def make_move
     input = nil
     until input
-      input = board.display.cursor.get_input
-      board.display.render
+      input = @board.display.cursor.get_input
+      @board.display.render
     end
+    input
   end
 end
