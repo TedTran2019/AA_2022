@@ -29,7 +29,8 @@ class Game
   end
 
   def game_over?
-    @board.checkmate?(:white) || @board.checkmate?(:black)
+    @board.checkmate?(:white) || @board.checkmate?(:black) || 
+    @board.no_moves?(@current_player.color)
   end
 end
 

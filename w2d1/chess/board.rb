@@ -123,9 +123,9 @@ class Board
       when 2, 5
         self[pos] = Bishop.new(pos, color, self)
       when 3
-        self[pos] = King.new(pos, color, self)
-      when 4
         self[pos] = Queen.new(pos, color, self)
+      when 4
+        self[pos] = King.new(pos, color, self)
       end
     end
   end
