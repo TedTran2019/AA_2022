@@ -1,23 +1,34 @@
 class Hand
   include Comparable
+  RANK = %i[straight_flush four_kind full_house flush straight
+    three_kind two_pair pair high_card].freeze
 
-  RANK = %i[high_card pair two_pair three_kind 
-    straight flush full_house four_kind straight_flush].freeze
-
-  attr_reader :cards, :count
+  attr_accessor :cards
+  attr_reader :count
 
   def initialize
     @cards = []
     @count = nil
   end
 
+  def take_cards(new_cards)
+    cards.concat(new_cards)
+    sort_all
+  end
+
+  def discard_cards(discard)
+    discarded = cards.select.with_index { |_card, i| discard.include?(i) }
+    cards.reject! { |card| discarded.include?(card) }
+    discarded
+  end
+
   def sort_all
-    @cards.sort { |a, b| b.value <=> a.value }
+    @cards.sort! { |a, b| b.value <=> a.value }
     sorted_count
   end
 
   def value
-    Hand::RANK.each_with_index {|rank, i| return i if method(rank).call }
+    Hand::RANK.each_with_index {|rank, i| return (8 - i) if method(rank).call }
   end
 
   def <=>(other_hand)
@@ -33,9 +44,9 @@ class Hand
   def tiebreaker(other_hand)
     @count.each_with_index do |kv, i|
       if kv[0] > other_hand.count[i][0]
-        1
+        return 1
       elsif kv[0] < other_hand.count[i][0]
-        -1
+        return -1
       end
     end
     0
@@ -43,7 +54,7 @@ class Hand
 
   def straight_flush
     4.times do |i|
-      return false unless cards[i].value == (cards[i + 1].value - 1) &&
+      return false unless (cards[i].value - 1) == cards[i + 1].value &&
                           cards[i].suite == cards[i + 1].suite
     end
     true
@@ -63,7 +74,7 @@ class Hand
   end
 
   def straight
-    4.times { |i| return false unless cards[i].value == cards[i + 1].value - 1 }
+    4.times { |i| return false unless (cards[i].value - 1) == cards[i + 1].value }
     true
   end
 

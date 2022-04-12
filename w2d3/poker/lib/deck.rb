@@ -13,7 +13,8 @@ class Deck
     4.times do |y|
       13.times do |x|
         value = (x.zero? ? 14 : x + 1)
-        unicode = ["1F0#{UNICODE[y + 9]}#{UNICODE[x]}".hex].pack('U')
+        unicode = nil
+        # unicode = ["1F0#{UNICODE[y + 9]}#{UNICODE[x]}".hex].pack('U')
         deck << Card.new(value, SUITES[y], unicode)
       end
     end
@@ -32,5 +33,13 @@ class Deck
 
   def [](idx)
     @deck[idx]
+  end
+
+  def take_cards(cards)
+    cards.each { |card| @deck.unshift(card) }
+  end
+
+  def shuffle!
+    @deck.shuffle!
   end
 end

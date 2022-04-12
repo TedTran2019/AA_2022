@@ -1,0 +1,20 @@
+Rspec: describe/context it expect, before, subject let
+predicate syntactic sugar: be
+to 
+and/or
+double aka mock
+core, expectations, mock
+{} to begin/rescue within spec file
+is_expected on one line/implicit subject
+
+Test Pyramid
+
+Why Specs? -> Works, flexibility, collab, documentation
+What to test?
+
+Why TDD?
+Workflow -> Red, Green, Refactor
+
+Automated testing
+
+Google Chrome developer tools
