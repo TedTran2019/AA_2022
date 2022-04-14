@@ -1,0 +1,13 @@
+Set
+Int Set
+Array Indexes under the hood
+Resizing Set - amortize
+Hashing - collisions 
+Hash Set
+Redefine hash and == to deal w/ equality for your class
+Linked List (use sentinel nodes)
+Caches
+LRU Cache
+
+Dynamic Array
+XOR
