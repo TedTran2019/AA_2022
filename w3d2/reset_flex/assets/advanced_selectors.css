@@ -47,7 +47,7 @@ input[type="radio"] {
     -webkit-appearance: none;
     width: 27px;
     height: 27px;
-    background-image: url(../assets/stars.png);
+    background-image: url(./stars.png);
     vertical-align: bottom;
 }
 
@@ -72,60 +72,17 @@ h2 + .user_review {
     border-top: 1px solid black;
 }
 
-/* This is where my experimentation begins */
+/* Starting here! */
 
-nav ul li {
-  display: inline-block;
+header {
+  display: flex;
+  justify-content: space-between;
 }
 
-ul li a, figcaption a {
-  display: inline-block;
-  padding: 20px;
-}
-
-nav {
-  display: inline-block;
-}
-
-body {
-  width: 900px;
-  margin: 0 auto;
-}
-
-main {
-  width: 700px;
-}
-
-aside {
-  width: 180px;
-  margin-right: 15px;
-}
-
-.aside-section {
+header nav ul {
   display: flex;
 }
 
-.ingredients-list li, ol li {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-.input_elements {
-  display: block;
-}
-
-select {
-  margin: 20px;
-}
-
-#name {
-  width: 200px;
-}
-
-#expertise {
-  width: 200px;
-}
-
-textarea {
-  width: 500px;
+header nav ul li {
+  margin: 0 10px;
 }

@@ -1,0 +1,35 @@
+All this is in the Ruby on Rails guides in a superior format, honestly.
+----------------------------------------------
+
+Ruby on Rails
+MVC, COC, REST
+Components: ActiveRecord, ActionController, ActionView, Rake, Rack
+CRUD
+CSRF
+
+Other frameworks
+
+Tip: For single repo, -G flag so you don't have nested repositories
+rails commnds: 
+new -d=postgresql
+db:create
+generate migration ActionTableName
+db:migrate, db:migrate:status
+db:rollback (Don't do this)
+console, dbconsole
+db:schema:load
+
+migrations, change > up/down
+Active Record methods + validations
+associations: has_many, belongs_to, has_many through, has_one through
+has one, has_and_belongs_to_many (many-to-many) - Not used often
+
+gems: annotate, pry-rails, byebug, better_errors, binding_of_caller
+
+validations vs constraints. complementary! 
+
+indexing (n vs logn since you can binary search once sorted),
+usually always index foreign keys. Add index if it's something you'll use for
+searching or joining
+
+N + 1 query
