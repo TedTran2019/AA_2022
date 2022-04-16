@@ -1,0 +1,23 @@
+RM
+RDBMS
+SQLITE3
+DDL
+DML
+
+Building a database, .sql file. 'Seeding a db'
+Sqlite3 commands
+Interacting w/ Sqlite3 database in Pry
+
+ORM
+heredoc
+SQL injection attack
+
+CSS Box Model
+Margin, border, padding
+Display types
+Inherit by specificity/order
+Resetting a page
+Outdated: Float and Clearfix trick
+Position property
+Flex and Grid
+CSS selectors
