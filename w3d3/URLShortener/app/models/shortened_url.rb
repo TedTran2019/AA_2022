@@ -61,7 +61,7 @@ class ShortenedUrl < ApplicationRecord
   # Whitespace doesn't matter
   # Parentheses matter in SQL
   # For two conditions, use the good ol' IN trick
-  def self.prune(n)
+  def self.prune2(n)
     ShortenedUrl
       .joins(:submitter)
       .joins('LEFT JOIN visits ON visits.shortened_url_id = shortened_urls.id')
@@ -97,7 +97,8 @@ class ShortenedUrl < ApplicationRecord
   )
 
   has_many(
-    :visits
+    :visits,
+    dependent: :destroy
   )
 
   has_many :visitors,
@@ -106,6 +107,7 @@ class ShortenedUrl < ApplicationRecord
   source: :user
 
   has_many(
-    :taggings
+    :taggings,
+    dependent: :destroy
   )
 end

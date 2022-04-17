@@ -1447,3 +1447,189 @@ Migrating to AddPremiumColumnToUsers (20220417030413)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[36mShortenedUrl Destroy (0.1ms)[0m  [1m[31mDELETE FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", 48]]
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jefferson@cats.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jefferson@cats.com"], ["created_at", "2022-04-17 05:22:37.238312"], ["updated_at", "2022-04-17 05:22:37.238312"], ["premium", true]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "muenster@cats.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "muenster@cats.com"], ["created_at", "2022-04-17 05:22:37.264499"], ["updated_at", "2022-04-17 05:22:37.264499"], ["premium", false]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 23]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 24]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 25]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 26]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 22]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 27]]
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 28]]
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Ted"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "Ted"], ["created_at", "2022-04-17 05:23:09.068759"], ["updated_at", "2022-04-17 05:23:09.068759"], ["premium", false]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Helen"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "Helen"], ["created_at", "2022-04-17 05:23:09.071602"], ["updated_at", "2022-04-17 05:23:09.071602"], ["premium", false]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Brian"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "Brian"], ["created_at", "2022-04-17 05:23:09.073614"], ["updated_at", "2022-04-17 05:23:09.073614"], ["premium", false]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Bill"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "Bill"], ["created_at", "2022-04-17 05:23:09.075613"], ["updated_at", "2022-04-17 05:23:09.075613"], ["premium", false]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Karen"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "Karen"], ["created_at", "2022-04-17 05:23:09.077468"], ["updated_at", "2022-04-17 05:23:09.077468"], ["premium", false]]
+  [1m[36mShortenedUrl Load (0.4ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mVisit Load (0.3ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 45]]
+  [1m[36mVisit Destroy (0.1ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 23]]
+  [1m[36mTagging Load (0.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."shortened_url_id" = $1[0m  [["shortened_url_id", 45]]
+  [1m[36mTagging Destroy (0.1ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 5]]
+  [1m[36mShortenedUrl Destroy (0.1ms)[0m  [1m[31mDELETE FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", 45]]
+  [1m[36mShortenedUrl Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "5mLYTlHwRLjCyYOkQA2NGw"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:37:in `random_code'
+  [1m[36mCACHE ShortenedUrl Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "5mLYTlHwRLjCyYOkQA2NGw"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE (user_id = 29) AND (created_at > '2022-04-17 05:22:09.120025')[0m
+  ↳ app/models/shortened_url.rb:21:in `no_spamming'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mShortenedUrl Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 29]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Create (0.2ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("short_url", "long_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["short_url", "5mLYTlHwRLjCyYOkQA2NGw"], ["long_url", "Ruby on Rails.com"], ["user_id", 29], ["created_at", "2022-04-17 05:23:09.123645"], ["updated_at", "2022-04-17 05:23:09.123645"]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "ExEDOjvTf4MlLFXN4jtH7A"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:37:in `random_code'
+  [1m[36mCACHE ShortenedUrl Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "ExEDOjvTf4MlLFXN4jtH7A"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE (user_id = 30) AND (created_at > '2022-04-17 05:22:09.125753')[0m
+  ↳ app/models/shortened_url.rb:21:in `no_spamming'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mShortenedUrl Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 30]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Create (0.1ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("short_url", "long_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["short_url", "ExEDOjvTf4MlLFXN4jtH7A"], ["long_url", "Cats.com"], ["user_id", 30], ["created_at", "2022-04-17 05:23:09.128107"], ["updated_at", "2022-04-17 05:23:09.128107"]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "x7w8aSi9zHZokvlnOROV1Q"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:37:in `random_code'
+  [1m[36mCACHE ShortenedUrl Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "x7w8aSi9zHZokvlnOROV1Q"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE (user_id = 30) AND (created_at > '2022-04-17 05:22:09.129894')[0m
+  ↳ app/models/shortened_url.rb:21:in `no_spamming'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mShortenedUrl Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 30]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Create (0.1ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("short_url", "long_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["short_url", "x7w8aSi9zHZokvlnOROV1Q"], ["long_url", "Graphic Design.com"], ["user_id", 30], ["created_at", "2022-04-17 05:23:09.132252"], ["updated_at", "2022-04-17 05:23:09.132252"]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "0SAA_1o8Od_sIKLip_eYGw"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:37:in `random_code'
+  [1m[36mCACHE ShortenedUrl Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "shortened_urls" WHERE "shortened_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "0SAA_1o8Od_sIKLip_eYGw"], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE (user_id = 30) AND (created_at > '2022-04-17 05:22:09.134161')[0m
+  ↳ app/models/shortened_url.rb:21:in `no_spamming'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mShortenedUrl Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "shortened_urls" WHERE "shortened_urls"."user_id" = $1[0m  [["user_id", 30]]
+  ↳ app/models/shortened_url.rb:27:in `nonpremium_max'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mShortenedUrl Create (0.1ms)[0m  [1m[32mINSERT INTO "shortened_urls" ("short_url", "long_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["short_url", "0SAA_1o8Od_sIKLip_eYGw"], ["long_url", "Nobody visit ;(.com"], ["user_id", 30], ["created_at", "2022-04-17 05:23:09.136506"], ["updated_at", "2022-04-17 05:23:09.136506"]]
+  ↳ app/models/shortened_url.rb:44:in `create_from_url'
+  [1m[36mVisit Load (0.1ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[36mVisit Destroy (0.1ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 21]]
+  [1m[36mVisit Destroy (0.1ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 22]]
+  [1m[36mVisit Destroy (0.1ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 24]]
+  [1m[36mVisit Destroy (0.1ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 25]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mVisit Create (0.5ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 29], ["shortened_url_id", 50], ["created_at", "2022-04-17 05:23:09.142623"], ["updated_at", "2022-04-17 05:23:09.142623"]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mVisit Create (0.1ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 29], ["shortened_url_id", 51], ["created_at", "2022-04-17 05:23:09.145413"], ["updated_at", "2022-04-17 05:23:09.145413"]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mVisit Create (0.1ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 30], ["shortened_url_id", 49], ["created_at", "2022-04-17 05:23:09.147725"], ["updated_at", "2022-04-17 05:23:09.147725"]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mVisit Create (0.1ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 31], ["shortened_url_id", 50], ["created_at", "2022-04-17 05:23:09.150021"], ["updated_at", "2022-04-17 05:23:09.150021"]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mVisit Create (0.1ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortened_url_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 32], ["shortened_url_id", 50], ["created_at", "2022-04-17 05:23:09.152299"], ["updated_at", "2022-04-17 05:23:09.152299"]]
+  ↳ app/models/visit.rb:13:in `record_visit!'
+  [1m[36mTagTopic Load (0.2ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics"[0m
+  [1m[36mTagTopic Destroy (0.1ms)[0m  [1m[31mDELETE FROM "tag_topics" WHERE "tag_topics"."id" = $1[0m  [["id", 7]]
+  [1m[36mTagTopic Destroy (0.1ms)[0m  [1m[31mDELETE FROM "tag_topics" WHERE "tag_topics"."id" = $1[0m  [["id", 8]]
+  [1m[36mTagTopic Destroy (0.1ms)[0m  [1m[31mDELETE FROM "tag_topics" WHERE "tag_topics"."id" = $1[0m  [["id", 9]]
+  [1m[36mTagTopic Create (0.2ms)[0m  [1m[32mINSERT INTO "tag_topics" ("topic", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["topic", "Career"], ["created_at", "2022-04-17 05:23:09.161269"], ["updated_at", "2022-04-17 05:23:09.161269"]]
+  [1m[36mTagTopic Create (0.1ms)[0m  [1m[32mINSERT INTO "tag_topics" ("topic", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["topic", "Cats"], ["created_at", "2022-04-17 05:23:09.162237"], ["updated_at", "2022-04-17 05:23:09.162237"]]
+  [1m[36mTagTopic Create (0.1ms)[0m  [1m[32mINSERT INTO "tag_topics" ("topic", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["topic", "Sadness"], ["created_at", "2022-04-17 05:23:09.163048"], ["updated_at", "2022-04-17 05:23:09.163048"]]
+  [1m[36mTagging Load (0.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings"[0m
+  [1m[36mTagging Destroy (0.1ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 6]]
+  [1m[36mTagging Destroy (0.1ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 7]]
+  [1m[36mTagging Destroy (0.1ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 8]]
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTagging Create (0.2ms)[0m  [1m[32mINSERT INTO "taggings" ("shortened_url_id", "tag_topic_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shortened_url_id", 49], ["tag_topic_id", 10], ["created_at", "2022-04-17 05:23:09.169450"], ["updated_at", "2022-04-17 05:23:09.169450"]]
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTagging Create (0.1ms)[0m  [1m[32mINSERT INTO "taggings" ("shortened_url_id", "tag_topic_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shortened_url_id", 51], ["tag_topic_id", 10], ["created_at", "2022-04-17 05:23:09.171932"], ["updated_at", "2022-04-17 05:23:09.171932"]]
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("shortened_url_id", "tag_topic_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shortened_url_id", 50], ["tag_topic_id", 11], ["created_at", "2022-04-17 05:23:09.174545"], ["updated_at", "2022-04-17 05:23:09.174545"]]
+  [1m[36mShortenedUrl Load (0.1ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls" WHERE "shortened_urls"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mTagTopic Load (0.1ms)[0m  [1m[34mSELECT "tag_topics".* FROM "tag_topics" WHERE "tag_topics"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mTagging Create (0.1ms)[0m  [1m[32mINSERT INTO "taggings" ("shortened_url_id", "tag_topic_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shortened_url_id", 52], ["tag_topic_id", 12], ["created_at", "2022-04-17 05:23:09.177271"], ["updated_at", "2022-04-17 05:23:09.177271"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT "shortened_urls".* FROM "shortened_urls"[0m
+  [1m[36mShortenedUrl Load (1.8ms)[0m  [1m[34mSELECT shortened_urls.* FROM "shortened_urls" LEFT JOIN visits ON shortened_urls.id = visits.shortened_url_id JOIN users ON shortened_urls.user_id = users.id WHERE (users.premium = false AND shortened_urls.created_at <= '2022-04-17 05:18:27.512237') GROUP BY "shortened_urls"."id" HAVING (COALESCE(MAX(visits.created_at), '2022-04-17 00:23:27.512489') <= '2022-04-17 05:18:27.512504')[0m
+  [1m[36mShortenedUrl Load (0.6ms)[0m  [1m[34mSELECT shortened_urls.* FROM "shortened_urls" LEFT JOIN visits ON shortened_urls.id = visits.shortened_url_id JOIN users ON shortened_urls.user_id = users.id WHERE (users.premium = false AND shortened_urls.created_at <= '2022-04-17 05:22:31.166821') GROUP BY "shortened_urls"."id" HAVING (COALESCE(MAX(visits.created_at), '2022-04-17 04:23:31.166977') <= '2022-04-17 05:22:31.166989')[0m
+  [1m[36mShortenedUrl Load (0.7ms)[0m  [1m[34mSELECT shortened_urls.* FROM "shortened_urls" LEFT JOIN visits ON shortened_urls.id = visits.shortened_url_id JOIN users ON shortened_urls.user_id = users.id WHERE (users.premium = false AND shortened_urls.created_at <= '2022-04-17 05:23:35.284463') GROUP BY "shortened_urls"."id" HAVING (COALESCE(MAX(visits.created_at), '2022-04-17 05:23:31.744692') <= '2022-04-17 05:23:35.284714')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVisit Load (0.2ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 51]]
+  [1m[36mVisit Destroy (0.3ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 27]]
+  [1m[36mTagging Load (0.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."shortened_url_id" = $1[0m  [["shortened_url_id", 51]]
+  [1m[36mTagging Destroy (0.3ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 10]]
+  [1m[36mShortenedUrl Destroy (0.2ms)[0m  [1m[31mDELETE FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", 51]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVisit Load (0.1ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 50]]
+  [1m[36mVisit Destroy (0.2ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 26]]
+  [1m[36mVisit Destroy (0.1ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 29]]
+  [1m[36mVisit Destroy (0.2ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 30]]
+  [1m[36mTagging Load (0.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."shortened_url_id" = $1[0m  [["shortened_url_id", 50]]
+  [1m[36mTagging Destroy (0.2ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 11]]
+  [1m[36mShortenedUrl Destroy (0.2ms)[0m  [1m[31mDELETE FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", 50]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVisit Load (0.2ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 49]]
+  [1m[36mVisit Destroy (0.2ms)[0m  [1m[31mDELETE FROM "visits" WHERE "visits"."id" = $1[0m  [["id", 28]]
+  [1m[36mTagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."shortened_url_id" = $1[0m  [["shortened_url_id", 49]]
+  [1m[36mTagging Destroy (0.2ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 9]]
+  [1m[36mShortenedUrl Destroy (0.1ms)[0m  [1m[31mDELETE FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", 49]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVisit Load (0.1ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."shortened_url_id" = $1[0m  [["shortened_url_id", 52]]
+  [1m[36mTagging Load (0.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."shortened_url_id" = $1[0m  [["shortened_url_id", 52]]
+  [1m[36mTagging Destroy (0.1ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 12]]
+  [1m[36mShortenedUrl Destroy (0.1ms)[0m  [1m[31mDELETE FROM "shortened_urls" WHERE "shortened_urls"."id" = $1[0m  [["id", 52]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT shortened_urls.* FROM "shortened_urls" LEFT JOIN visits ON shortened_urls.id = visits.shortened_url_id JOIN users ON shortened_urls.user_id = users.id WHERE (users.premium = false AND shortened_urls.created_at <= '2022-04-17 04:32:52.066861') GROUP BY "shortened_urls"."id" HAVING (COALESCE(MAX(visits.created_at), '2022-04-14 17:32:52.075640') <= '2022-04-17 04:32:52.075654')[0m
+  ↳ app/models/shortened_url.rb:58:in `prune'
+  [1m[36mShortenedUrl Load (1.3ms)[0m  [1m[34mSELECT shortened_urls.* FROM "shortened_urls" LEFT JOIN visits ON shortened_urls.id = visits.shortened_url_id JOIN users ON shortened_urls.user_id = users.id WHERE (users.premium = false AND shortened_urls.created_at <= '2022-04-17 04:32:55.521124') GROUP BY "shortened_urls"."id" HAVING (COALESCE(MAX(visits.created_at), '2022-04-14 17:32:55.530117') <= '2022-04-17 04:32:55.530132')[0m
+  ↳ app/models/shortened_url.rb:58:in `prune'
