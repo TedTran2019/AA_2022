@@ -33,3 +33,6 @@ usually always index foreign keys. Add index if it's something you'll use for
 searching or joining
 
 N + 1 query
+
+-------------
+Can only run rails runner bin/script, doesn't work with script alone.

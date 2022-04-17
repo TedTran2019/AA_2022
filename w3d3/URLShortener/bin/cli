@@ -1,0 +1,57 @@
+ #!/usr/bin/env /Users/tedtran/Desktop/AA_2022/w3d3/URLShortener/rails runner
+def get_email_input
+  email = nil
+  until email
+    print "Input your email:\n> "
+    email = gets.chomp
+    email = nil unless User.exists?(email: email)
+  end
+  email
+end
+
+def get_input
+  input = nil
+  until input
+    print "What do you want to do?\n0. Create shortened URL\n1. Visit shortened URL\n> "
+    input = gets.chomp
+    input = nil unless %w[0 1].include?(input)
+  end
+  input
+end
+
+def get_url(type)
+  print "Type in your #{type} url\n> "
+  long_url = gets.chomp
+end
+
+def create_shortened_url(email)
+  user = User.find_by(email: email)
+  long_url = get_url('long')
+  short_url = ShortenedUrl.create_from_url(user, long_url)
+  puts "Short url is: #{short_url.short_url}"
+  puts "Goodbye!"
+end
+
+def visit_shortened_url(email)
+  user = User.find_by(email: email)
+  short_url = get_url('short')
+  long_url = user.submitted_urls.find_by(short_url: short_url)
+  if long_url.nil?
+    puts "URL hasn't been shortened yet!"
+    return
+  end
+  puts "Launching #{long_url.long_url} ..."
+  puts 'Goodbye!'
+end
+
+def action
+  email = get_email_input
+  input = get_input
+  if input == '0'
+    create_shortened_url(email)
+  else
+    visit_shortened_url(email)
+  end
+end
+
+action
