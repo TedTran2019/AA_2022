@@ -1,0 +1,3 @@
+Metaprogramming/Reflection: send, define_method, method_missing
+Class instance variables vs class variables (@@)
+Global variables
