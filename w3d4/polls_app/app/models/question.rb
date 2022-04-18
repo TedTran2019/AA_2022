@@ -27,6 +27,7 @@ class Question < ApplicationRecord
   end
 
   # SQL solution since we only want the count
+  # Count already doesn't count NULL values. Can just use that instead.
   def results
     results = {}
     data = answer_choices
