@@ -1,0 +1,13 @@
+Active Relation
+count vs length vs size
+joins - attributes, aliases
+N + 1, includes
+scopes
+find, where, find_by, find_by_sql
+Ternary logic in SQL
+where.not
+
+rbenv is super useful
+Fixing version issues is truly pain...
+
+When to use :includes and when to join?
