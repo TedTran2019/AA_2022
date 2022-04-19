@@ -1,0 +1,44 @@
+AA uses Rails 5.2.3 instead of 7. So ya' know, make sure to set environment properly.
+*rails _5.2.3_ new
+*remove '<%= javascript_include_tag "application" %>' from app/views/layouts/application.html.erb
+*gems: better_errors, binding_of_caller, pry-rails
+
+API
+Webservice/Website
+Client side rendering(SPA)
+
+Request(method, path, query, body)
+Response(status, body)
+
+Router: looks at paths/method to route to controller
+Convention for routes
+RESTful routes
+Shortcut for routes
+Nest collection, not member
+Postman/Insomnia/VScode REST client
+
+params in controller: query, body, URL params
+Whitelist attributes (require, permit)
+Controllers in plural
+CRUD
+routing helpers
+rails routes
+root
+
+callbacks
+(relational/dependent, registered)
+before_validation, after_create, after_destroy
+
+delegation (Fix law of demeter violations)
+
+DNS
+cache poisoning 
+
+turn off: CSRF in app/controllers/application_controller.rb to test w/ Postman
+
+to_json, render json
+
+controller -> view, instance vars
+forms can only get/post, hidden method
+persisted?
+templates
