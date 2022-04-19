@@ -46,11 +46,7 @@ class SQLObject
   end
 
   def self.parse_all(results)
-    results.map do |hash|
-      sym_hash = {}
-      hash.each { |k, v| sym_hash[k.to_sym] = v}
-      self.new(sym_hash)
-    end
+    results.map { |hash| self.new(hash) }
   end
 
   def self.find(id)
@@ -64,13 +60,12 @@ class SQLObject
     SQL
     return nil if data.empty?
 
-    data_sym = {}
-    data.first.each { |k, v| data_sym[k.to_sym] = v }
-    self.new(data_sym)
+    self.new(data.first)
   end
 
   def initialize(params = {})
     params.each do |col, value|
+      col = col.to_sym
       raise "unknown attribute '#{col}'" unless self.class.columns.include?(col)
 
       send("#{col}=", value)
@@ -86,9 +81,10 @@ class SQLObject
   end
 
   def insert
-    col_names = self.class.columns.join(',')
-    question_marks = ('?' * self.class.columns.length).split('').join(',')
-    DBConnection.execute(<<-SQL, *attribute_values)
+    columns = self.class.columns.drop(1)
+    col_names = columns.join(',')
+    question_marks = ('?' * columns.length).split('').join(',')
+    DBConnection.execute(<<-SQL, *attribute_values.drop(1))
     INSERT INTO
       #{self.class.table_name} (#{col_names})
     VALUES
@@ -111,6 +107,6 @@ class SQLObject
   end
 
   def save
-    # ...
+    self.id.nil? ? insert : update
   end
 end
