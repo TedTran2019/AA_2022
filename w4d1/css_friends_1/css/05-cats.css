@@ -15,6 +15,7 @@
   bottom: 20px;
   left: 250px;
   text-shadow: 2px 2px black;
+  line-height: 1;
 }
 
 .button {

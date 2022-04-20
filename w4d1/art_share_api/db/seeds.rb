@@ -25,3 +25,8 @@ as3 = ArtworkShare.create!(artwork_id: p1.id, viewer_id: u3.id)
 as4 = ArtworkShare.create!(artwork_id: p5.id, viewer_id: u1.id)
 as5 = ArtworkShare.create!(artwork_id: p2.id, viewer_id: u1.id)
 as6 = ArtworkShare.create!(artwork_id: p3.id, viewer_id: u1.id) 
+
+Comment.destroy_all
+c1  = Comment.create!(body: 'Beautiful work', author_id: u1.id, artwork_id: p1.id)
+c2  = Comment.create!(body: 'Excellent!', author_id: u3.id, artwork_id: p1.id)
+c3  = Comment.create!(body: "It's not good", author_id: u2.id, artwork_id: p4.id)

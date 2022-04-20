@@ -18,6 +18,10 @@ class User < ApplicationRecord
   foreign_key: :viewer_id,
   dependent: :destroy
 
+  has_many :comments, 
+  foreign_key: :author_id,
+  dependent: :destroy
+
   # Artworks shared with this user
   has_many :shared_artworks,
   through: :artwork_shares,
