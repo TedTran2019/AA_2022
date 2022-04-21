@@ -11,7 +11,10 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+require 'action_view'
 class Cat < ApplicationRecord
+  include ActionView::Helpers::DateHelper
+
   COLORS = %w[black white orange].freeze
 
   validates :birth_date, :color, :name, :sex, presence: true
@@ -20,4 +23,8 @@ class Cat < ApplicationRecord
 
   has_many :cat_rental_requests,
   dependent: :destroy
+
+  def age
+    time_ago_in_words(birth_date)
+  end
 end
