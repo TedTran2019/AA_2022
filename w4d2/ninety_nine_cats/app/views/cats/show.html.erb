@@ -1,0 +1,36 @@
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Sex</td>
+      <td>Color</td>
+      <td>Birth Date</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @cat.name %></td>
+      <td><%= @cat.sex %></td>
+      <td><%=@cat.color  %></td>
+      <td><%= @cat.birth_date %></td>
+    </tr>
+  </tbody>
+</table>
+
+Description: <%= @cat.description %>
+<br>
+
+<% @cat.cat_rental_requests.order('start_date').each do |request| %>
+  start_date: <%= request.start_date %>
+  <br>
+  end_date: <%= request.end_date %>
+  <br>
+  <% if request.status == 'PENDING' %>
+    <a href=
+    <%=approve_cat_rental_request_url(request) %>>APPROVE</a>
+    <a href=
+    <%= deny_cat_rental_request_url(request) %>>DENY</a>
+  <% end %>
+  <br>
+  <br>
+<% end %>

@@ -1,0 +1,25 @@
+views
+<% logic
+<%= render
+redirect
+render/redirect are NOT returns
+
+forms
+action: url, method: http method
+name = key
+
+partials
+input type=hidden, name=_method, value = http method that's not get/post
+value is just setting value
+starts w/ underscore
+
+errors
+fail keyword
+
+render shortcut, think about what's going on
+pe tab / er tab vs just typing it out
+
+link_to(GET), button_to(da rest)
+
+append [] to build array instead of replacing values in hash
+(no array of hashes tho) unless you use a tricka

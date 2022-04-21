@@ -1,0 +1,47 @@
+<% url = (method == 'new' ? cats_url : cat_url(cat)) %>
+
+<form action=<%=url%> method='post'>
+  <% if method == 'edit' %>  
+    <input type="hidden" name='_method' value='PATCH'>
+  <% end %>
+
+  <label for="name">Name</label>
+  <input id='name'type="text" name='cat[name]' value=<%=cat.name%>>
+
+  <p>Select sex</p>
+  <label for="male">M</label>
+  <input id='male' type="radio" name='cat[sex]' value="M"
+   <%= 'checked' if cat.sex == 'M' %>>
+
+  <label for="female">F</label>
+  <input id='female' type="radio" name='cat[sex]' value="F"
+  <%= 'checked' if cat.sex == 'F' %>>
+
+  <br>
+
+  <label for="color">Pick cat's color!</label>
+  <select name="cat[color]" id="color">
+    <option disabled selected>--Select a color!--</option>
+    <option value="orange"
+    <%= 'selected' if cat.color == 'orange' %>>Orange</option>
+    <option value="white"
+    <%= 'selected' if cat.color == 'white' %>>White</option>
+    <option value="black"
+    <%= 'selected' if cat.color == 'black' %>>Black</option>
+  </select>
+
+  <br>
+
+  <label for="birth_date">Birth Date</label>
+  <input id='birth_date' type="date" name='cat[birth_date]'
+  value=<%=cat.birth_date%>>
+
+  <br>
+
+  <label for="description">Description</label>
+  <textarea name="cat[description]" id="description" cols="30" rows="10"><%= cat.description %></textarea>
+
+  <br>
+
+  <input type="submit" value='Submit'>
+</form>
