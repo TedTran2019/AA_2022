@@ -1,0 +1,26 @@
+CSRF attack + protection
+sandboxing
+built-in Rails protection: authenticity_token, form_authenticity_token
+protect_from_forgery w/ exception so it isn't confusing af
+radio buttons, textarea
+ApplicationHelper -> view methods, html_safe, html_escape (h)
+layouts, stylesheet_link_tag, javascript_include_tag (Honestly the normal HTML seems cleaner)
+
+ActonMailer
+rails g mailer [name]
+batch up/send emails offline
+letter opener gem
+
+rails helpers: link_to, form_for, button_to, etc
+view helpers
+capture
+
+layouts, yield, content_for
+asset pipeline
+
+rails
+
+mimemagic gem issues -> Change ver. to 3.10. I orig. tried the latest version(0.4.3), 
+bundle update mimemagic, then bundle update marcel.
+
+Can use the same app helper file across diff. projects. Could save a lot of pain.
