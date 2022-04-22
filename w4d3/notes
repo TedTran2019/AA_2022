@@ -1,0 +1,43 @@
+Authentication: 
+secure state
+strategies
+cookies: circumventing stateless HTTP
+- client-side
+- how packet routing works, never plain text passwords
+authentication
+- user/pass ->
+- <- session_token
+encoding vs encrypting, neither are viable
+- why it's called base64
+- encoding: algorithm is enough
+- encrypting: algorithm + 'key'
+hashing
+- hash collision 
+- uniform, deterministic, low hash collisions
+- cryptographic hashing
+salting
+- dealing w/ rainbow tables
+- hash w/ random appended 'salt'
+- hash x amount of times
+session, flash
+- session: tamper-free version of cookies
+- flash: temp. cookie lasting one render/redirect (flash.now vs flash)
+- flash.now isn't actually a cookie, just an abstraction
+auth pattern
+- validates pw, password=, generate/ensure/reset sess_token, find_by credentials,
+users, sessions, app controller current_user, login, b4 action: redirect unless login
+
+BCrypt::Password.create 
+- salts for you
+- methods
+
+Singular resource(no id ever) vs resources
+CSRF auth token
+
+Session can be implemented by cookies or DB
+
+.try (calls if isn't nil)
+persisted?
+before_action, after_initialization, etc filters
+
+migration -> model -> routes -> controller -> views
