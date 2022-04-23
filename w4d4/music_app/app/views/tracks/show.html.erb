@@ -1,0 +1,38 @@
+<table>
+  <th>
+    <tr>
+      <th>Title</th>
+      <th>Ord</th>
+      <th>Bonus</th>
+      <th>Album</th>
+    </tr>
+  </th>
+  <tbody>
+    <tr>
+      <th><%= @track.title %></th>
+      <th><%= @track.ord %></th>
+      <th><%= @track.bonus %></th>
+      <th><%= @track.album.title %></th>
+    </tr>
+  </tbody>
+</table>
+
+<%= ugly_lyrics(@track.lyrics) %>
+
+<br>
+
+<%= render 'notes/note', track: @track %>
+
+<form action='<%=notes_url%>' method='post'>
+  <%= auth_token %>
+  <label for="description">Note</label>
+  <textarea name="note[description]" id="description" cols="30" rows="10"
+  ><%= @note.description %></textarea>
+
+  <input type="hidden" value=<%=@track.id%> name='note[track_id]'>
+
+  <input type="submit" value='submit'>
+</form>
+
+<%= link_to 'Edit this track', edit_track_url(@track) %>
+<%= link_to @track.album.title, album_url(@track.album_id) %>

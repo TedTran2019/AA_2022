@@ -1,0 +1,42 @@
+<% url = (method == 'post' ? tracks_url : track_url(track)) %>
+
+<form action=<%= url %> method='post'>
+  <%= auth_token %>
+  <% if method == 'patch' %>
+    <%= hidden_method('patch') %>
+  <% end %>
+
+  <label for="title">Title</label>
+  <input id='title' type="text" name='track[title]'
+  value=<%=track.title%>>
+
+  <label for="ord">Ord</label>
+  <input id='ord' type="text" name='track[ord]'
+  value=<%=track.ord%>>
+
+  <br>
+
+  <label for="bonus">Bonus</label>
+  <input id='bonus' type="radio" name='track[bonus]'
+  <%= 'checked' if track.bonus == true %>>
+  <label for="regular">Regular</label>
+  <input id='regular' type="radio" name='track[bonus]'
+  <%= 'checked' if track.bonus == false %>>
+
+  <br>
+
+  <label for="album">Album</label>
+  <select name="track[album_id]" id="album">
+    <% Album.all.each do |album| %>
+      <option value="<%=album.id%>"
+      <%= 'selected' if album.id.to_s == params['album_id'] %>><%= album.title %></option>
+    <% end %>
+  </select>
+
+  <br>
+
+  <label for="lyrics">Lyrics</label>
+  <textarea name="track[lyrics]" id="lyrics" cols="30" rows="10"><%= track.lyrics %></textarea>
+
+  <input type="submit" value='Submit'>
+</form>

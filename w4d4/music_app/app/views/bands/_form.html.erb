@@ -1,0 +1,13 @@
+<% url = (method == 'post' ? bands_url : band_url(band)) %>
+
+<form action=<%= url %> method='post'>
+  <%= auth_token %>
+  <% if method == 'patch' %>
+    <%= hidden_method('patch') %>
+  <% end %>
+
+  <label for="name">Band Name</label>
+  <input id='name' type="text" name='band[name]' value='<%= band.name %>'>
+
+  <input type="submit" value='Submit'>
+</form>

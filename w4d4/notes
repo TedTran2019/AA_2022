@@ -24,3 +24,13 @@ mimemagic gem issues -> Change ver. to 3.10. I orig. tried the latest version(0.
 bundle update mimemagic, then bundle update marcel.
 
 Can use the same app helper file across diff. projects. Could save a lot of pain.
+
+Project not allowing form_for, but it seems it'll be awesome in future projects.
+
+Just playing around is showing me a lot.
+- You'll run into small bugs if you don't surround erb values with ''...
+- Review on N+1 queries and includes. Not gonna bother fixing for this toy project
+- There are gems to detect, and it's pretty easy to see on your own as well
+- 'false' and presence validations
+- Couldn't get error handling to be done in a rational way due to Flash.now
+  being strange as hell... or looking at error messages in general.
