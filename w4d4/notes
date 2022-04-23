@@ -32,4 +32,5 @@ Just playing around is showing me a lot.
 - Review on N+1 queries and includes. Not gonna bother fixing for this toy project
 - There are gems to detect, and it's pretty easy to see on your own as well
 - 'false' and presence validations
-- Flash works as intended, but Flash.now doesn't. Why not?
+- Flash works as intended, but Flash.now doesn't. Why not? Figured it out. After
+an error, you have to put a status code with the render or it doesn't work. 
