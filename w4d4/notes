@@ -32,5 +32,4 @@ Just playing around is showing me a lot.
 - Review on N+1 queries and includes. Not gonna bother fixing for this toy project
 - There are gems to detect, and it's pretty easy to see on your own as well
 - 'false' and presence validations
-- Couldn't get error handling to be done in a rational way due to Flash.now
-  being strange as hell... or looking at error messages in general.
+- Flash works as intended, but Flash.now doesn't. Why not?
