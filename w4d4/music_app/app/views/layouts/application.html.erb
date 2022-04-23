@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <div class='errors'>
+      <% if flash[:errors] %>
+        <%= flash[:errors] %>
+      <% elsif flash.now[:errors] %>
+        <%= flash.now[:errors] %>
+      <% end %>
+    </div>
+
     <header class='music-header'>
     <h1>Music App</h1>
       <div class='header-login'>

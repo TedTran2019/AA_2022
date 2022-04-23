@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to user_url(@user)
     else
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
     if @user
       render :show
     else
+      flash.now[:errors] = 'Not found!'
       render json: 'Not found!', status: 404
     end
   end

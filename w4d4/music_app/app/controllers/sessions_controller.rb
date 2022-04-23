@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       login!(@user)
       redirect_to user_url(@user)
     else
+      flash.now[:errors] = 'Incorrect email or password'
       @user ||= User.new(user_params)
       render :new
     end
@@ -18,8 +19,11 @@ class SessionsController < ApplicationController
   def destroy
     if current_user
       logout!
+      redirect_to new_session_url
+    else
+      flash.now[:errors] = 'Not found!'
+      render json: 'No such user found'
     end
-    redirect_to new_session_url
   end
 
   private
