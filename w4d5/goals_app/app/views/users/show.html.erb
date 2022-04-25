@@ -1,0 +1,14 @@
+<%= @user.username %>
+<div>
+  COMMENTS:
+  <% @user.comments.each do |comment| %>
+    <%= comment.description %>
+  <% end %>
+</div>
+<%= form_with(url: comments_url) do |form| %>
+  <label for="comment[description]">Description</label>
+  <%= form.text_area 'comment[description]'  %>
+  <%= form.hidden_field 'comment[commentable_type]', value: 'User' %>
+  <%= form.hidden_field 'comment[commentable_id]', value: @user.id %>
+  <%= form.submit %>
+<% end %>

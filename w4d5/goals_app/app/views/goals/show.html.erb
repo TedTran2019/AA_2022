@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @goal, goal: @goal %>
+
+<%= form_with(url: comments_url) do |form| %>
+  <label for="comment[description]">Description</label>
+  <%= form.text_area 'comment[description]'  %>
+  <%= form.hidden_field 'comment[commentable_type]', value: 'Goal' %>
+  <%= form.hidden_field 'comment[commentable_id]', value: @goal.id %>
+  <%= form.submit %>
+<% end %>
+
+<div>
+  <%= link_to "Edit this goal", edit_goal_path(@goal) %> |
+  <%= link_to "Back to goals", goals_path %>
+
+  <%= button_to "Destroy this goal", @goal, method: :delete %>
+</div>

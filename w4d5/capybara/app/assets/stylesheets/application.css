@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 20px;
+  width: 100vw;
+ }
+
+ body a {
+   background-color: aqua;
+   border-radius: 25%;
+   padding: 5px;
+   border: 1px groove black;
+   display: flex;
+   justify-content: center;
+   margin: 3px;
+ }
+
+ .music-header {
+   display: flex;
+   justify-content: space-between;
+   background-color: yellowgreen;
+ }
+
+ .music-header > h1 {
+   width: 80vw;
+   display: flex;
+   justify-content: center;
+ }
+
+ .header-login {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .new-user, .new-session {
+  display: flex;
+  justify-content: center;
+ }
+
+ .new-user > label, .new-session > label { 
+   margin: 10px;
+ }
+
+ .bands-index li {
+    padding: 5px 5px;
+ }
+
+ .bands-index div {
+   display: flex;
+   margin: 10px;
+ }
+
+ .album-table th{
+   padding: 10px;
+   border: 1px groove red;
+ }
+
+ .album-table {
+   width: 900px;
+   margin: 0 auto;
+ }

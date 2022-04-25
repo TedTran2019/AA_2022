@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class='errors'>
+      <% if flash[:errors] %>
+        <%= flash[:errors] %>
+      <% end %>
+    </div>
+
+    <header class='music-header'>
+    <h1>Music App</h1>
+      <div class='header-login'>
+        <% if logged_in? %>
+          <%= current_user.email %>
+          <%= button_to 'Logout', session_url, method: 'delete' %>
+        <% else %>
+          <%= link_to 'Create user', new_user_url %>
+          <%= link_to 'Login', new_session_url %>
+        <% end %>
+    </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>

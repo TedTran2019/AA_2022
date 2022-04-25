@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoalsApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <div class='errors'> 
+    <% if flash[:errors] %>
+      <%= flash[:errors] %>
+    <% end %>
+  </div>
+
+  <header>
+    <% if logged_in? %>
+      <%= current_user.username %>
+      <%= button_to 'Logout', session_url , method: :delete %>
+    <% else %>
+      <%= link_to 'New User', new_user_url %>
+      <%= link_to 'Returning User', new_session_url %>
+    <% end %>
+  </header>
+    <%= yield %>
+  </body>
+</html>

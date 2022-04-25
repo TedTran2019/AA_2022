@@ -1,0 +1,29 @@
+<%= form_with(model: goal) do |form| %>
+  <% if goal.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+
+      <ul>
+        <% goal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  
+  <%= form.label :private %>
+  <%= form.check_box :private %>
+
+  <%= form.label :completed %>
+  <%= form.check_box :completed %>
+
+  <%= form.label :details %>
+  <%= form.text_area :details %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

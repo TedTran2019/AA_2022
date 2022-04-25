@@ -1,0 +1,40 @@
+Learn how to use Rails form_with and scaffolds, Github Copilot for tests
+-----------------------
+Rails testing -> works, refactor, collab, documentation
+unit -> integration -> end to end (MVC)
+factory_bot_rails / faker / rspec-rails / shoulda-matchers / capybara /launchy
+extra: rails-controller-testing (if you want those depreciated methods), guard-rspec
+
+rails g rspec:install
+--require spec_helper, --color, --format documentation
+
+What do you test on each of the MVC?
+one liners for validations + associations
+Using factory bot / faker / shoulda-matchers
+rails rspec API for controller testing (C)
+Capybara API for testing website features
+rspec view specs 
+
+# my_app/config/application.rb
+config.generators do |g|
+  g.test_framework :rspec,
+    :fixtures => false,
+    :view_specs => false,
+    :helper_specs => false,
+    :routing_specs => false,
+    :controller_specs => true,
+    :request_specs => false
+end
+
+rails db:reset RAILS_ENV=test
+have_http_status(nbr) replaced be_success
+be_present
+
+Gems -> application.rb edit -> edit files for gems -> setup rspec and db
+app controller/helper useful methods
+
+Form_with is really amazing. The best part is that you can write HTML anytime. 
+Includes auth_token, hidden method 'patch' which it prob. does thru checking persistance, etc
+Values are retained without being specified. 
+
+Concerns are great for DRYing up code

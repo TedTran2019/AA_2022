@@ -1,0 +1,11 @@
+<ul class='bands-index'>
+  <% @bands.each do |band| %>
+    <div>
+      <li><%= link_to band.name, band_url(band) %></li>
+      <%= link_to 'Edit', edit_band_url(band) %>
+      <%= button_to 'Destroy', band_url(band), method: :delete %>
+    </div>
+    <% end %>
+</ul>
+
+<%= link_to 'Add another Band', new_band_url %>

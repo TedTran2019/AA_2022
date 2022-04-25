@@ -1,0 +1,24 @@
+<div id="<%= dom_id goal %>">
+  <ul>
+    <li>Title: <%= goal.title %></li>
+    <li>Details: <%= goal.details %></li>
+    <li>Visibility: <%= goal.private ? 'Private' : 'Public' %></li>
+    <li>Finished?: <%= goal.completed ? 'Completed' : 'Ongoing' %></li>
+    <li>Completed?<%= 
+      if goal.completed 
+        button_to 'Oops! Did not complete', goal_url(goal), method: :patch,
+        params: { goal: { completed: false } }
+      else
+        button_to 'Complete.', goal_url(goal), method: :patch,
+        params: { goal: { completed: true } }
+      end
+    %></li>
+  </ul>
+
+  <ul>
+    Comments: 
+    <% goal.comments.each do |comment| %>
+      <li><%= comment.description %></li>
+    <% end %>
+  </ul>
+</div>
