@@ -1,3 +1,4 @@
+<h1>Login</h1>
 <%= form_with model: @user do |form| %>
   <%= form.label :username %>
   <%= form.text_field :username %>
@@ -5,3 +6,4 @@
   <%= form.password_field :password %>
   <%= form.submit 'Login!' %>
 <% end %>
+<%= link_to 'Sign up!', new_user_url %>

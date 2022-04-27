@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>All the Subs!</h1>
+
+<div id="subs">
+  <% @subs.each do |sub| %>
+    <ul>
+      <li><%= link_to sub.title, sub %></li>
+    </ul>
+  <% end %>
+</div>

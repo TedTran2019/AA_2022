@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sub %>
+
+<div>
+  <%= link_to "Edit this sub", edit_sub_path(@sub) %>
+  <%= button_to "Destroy this sub", @sub, method: :delete %>
+</div>
