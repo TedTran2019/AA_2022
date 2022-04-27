@@ -6,3 +6,4 @@ grid, flex
 transform
 selectors, pseudo-selectors
 guard livereload vs HMR vs Hotwire live reload
+icons, nested dropdowns, modals
