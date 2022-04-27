@@ -1,0 +1,11 @@
+associations define several methods
+checkboxes -> multiple values -> ex: cat[tag_ids][] -> atomic
+inverse_of
+permit 'etc: []' for mass assignment
+validate association > foreign key
+something uploaded so updates when nothing selected -> hidden input w/ empty value
+query string (passing in params to url in erb file)
+polymorphic associations
+concerns (can add instance + class methods at same time, execute code when included)
+position, overflow, calc
+decorators -> draper gem
