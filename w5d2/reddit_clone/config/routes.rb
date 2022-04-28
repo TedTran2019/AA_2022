@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create show]
   resource :session, only: %i[new create destroy]
 
-  resources :subs 
+  resources :subs
   resources :posts, except: %i[index]
+
+  root 'subs#index'
 end
