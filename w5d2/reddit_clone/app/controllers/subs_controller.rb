@@ -1,4 +1,6 @@
 class SubsController < ApplicationController
+  before_action :require_logged_in
+  
   def index
     @subs = Sub.all
   end
@@ -29,7 +31,7 @@ class SubsController < ApplicationController
   end
 
   def edit
-    @sub = Sub.find_by(id: params[:id])
+    @sub = current_user.subs.find_by(id: params[:id])
     if @sub
       render :edit
     else
@@ -39,7 +41,7 @@ class SubsController < ApplicationController
   end
 
   def update
-    @sub = Sub.find_by(id: params[:id])
+    @sub = current_user.subs.find_by(id: params[:id])
     if @sub&.update(sub_params)
       redirect_to sub_url(@sub)
     else
@@ -49,7 +51,7 @@ class SubsController < ApplicationController
   end
 
   def destroy
-    @sub = Sub.find_by(id: params[:id])
+    @sub = current_user.subs.find_by(id: params[:id])
     if @sub
       @sub.destroy
       redirect_to subs_url

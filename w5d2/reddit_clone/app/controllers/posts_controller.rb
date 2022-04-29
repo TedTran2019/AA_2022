@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_logged_in
+
   def show
     @post = Post.find_by(id: params[:id])
     if @post
@@ -26,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     if @post
       render :edit
     else
@@ -36,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     if @post&.update(post_params)
       redirect_to post_url(@post)
     else
@@ -46,7 +48,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     if @post
       @post.destroy
       redirect_to subs_url
