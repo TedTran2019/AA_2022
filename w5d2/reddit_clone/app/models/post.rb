@@ -31,4 +31,12 @@ class Post < ApplicationRecord
   def top_level_comments
     comments.where(parent_comment_id: nil)
   end
+
+  def comments_by_parent_id
+    comment_dict = Hash.new { |h, k| h[k] = []}
+    comments.each do |comment|
+      comment_dict[comment.parent_comment_id] << comment
+    end
+    comment_dict
+  end
 end

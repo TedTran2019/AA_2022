@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     if @post
+      @comments = @post.comments_by_parent_id
       render :show
     else
       flash.now[:errors] = 'Post not found'
