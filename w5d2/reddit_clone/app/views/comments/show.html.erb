@@ -1,0 +1,10 @@
+<%= @comment.content %>
+
+<h3>Reply to this comment: </h3>
+<%= form_with url: comments_url, method: :post do |f| %>
+  <%= f.label 'comment[content]', 'Content' %>
+  <%= f.text_area 'comment[content]' %>
+  <%= f.hidden_field 'comment[post_id]', value: @comment.post_id %>
+  <%= f.hidden_field 'comment[parent_comment_id]', value: params[:id] %>
+  <%= f.submit 'Submit' %>
+<% end %>

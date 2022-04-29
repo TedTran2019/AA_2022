@@ -1,0 +1,6 @@
+<%= form_with(model: comment) do |form| %>
+<%= form.label :content %>
+<%= form.text_area :content %>
+<%= form.hidden_field :post_id, value: params[:post_id] %>
+<%= form.submit 'Submit' %>
+<% end %>

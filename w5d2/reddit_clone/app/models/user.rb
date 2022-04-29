@@ -24,6 +24,11 @@ class User < ApplicationRecord
            foreign_key: :author_id,
            dependent: :destroy
   
+  has_many :authored_comments,
+  class_name: :Comment,
+  foreign_key: :author_id,
+  dependent: :destroy
+  
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user&.is_password?(password)

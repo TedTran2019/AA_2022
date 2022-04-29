@@ -24,4 +24,11 @@ class Post < ApplicationRecord
   has_many :subs,
   through: :post_subs,
   source: :sub
+
+  has_many :comments,
+  dependent: :destroy
+
+  def top_level_comments
+    comments.where(parent_comment_id: nil)
+  end
 end
