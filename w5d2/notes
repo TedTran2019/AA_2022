@@ -9,3 +9,4 @@ polymorphic associations
 concerns (can add instance + class methods at same time, execute code when included)
 position, overflow, calc
 decorators -> draper gem
+bullet gem
