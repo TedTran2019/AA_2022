@@ -1,0 +1,27 @@
+Rails-Lite
+HTTP Req
+method path ver
+Headers: host, accept lang, etc
+Http Res
+ver code message
+length type response
+netcat
+req -> web server -> rails
+
+rack- middleware
+rack methods: set_cookie, cookies, req, res, env, params, finish, status, etc
+redirect: status 302, change res['Location'] to another path
+
+TCP/IP
+socket, threads
+regex
+
+HTTP
+req: method, target, ver, header(only host is mandatory), body(not all)
+res: ver, code, text code, header, body
+mime types: http equiv. of filename extension
+
+Middleware stack
+use, run, to_app
+
+instance_eval, class_eval
