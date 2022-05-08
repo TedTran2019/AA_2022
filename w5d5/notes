@@ -15,3 +15,9 @@ import ... from ...
 export
 
 cmd shift c on dev tools to magnify glass
+
+ES6 promises
+wrapping old callback-based code in promises (e.g setTimeOut)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+async/await
+
