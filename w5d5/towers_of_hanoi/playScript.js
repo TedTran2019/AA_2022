@@ -6,7 +6,16 @@ const reader = readline.createInterface({
   output: process.stdout
 });
 
-game = new TowersOfHanoi(reader);
-game.run(() => {
-  reader.close();
-});
+const completionCallback = (reader) => {
+  reader.question('Would you like to play again? (y/n): ', answer => {
+    if (answer === 'y') {
+      let game = new TowersOfHanoi(reader);
+      game.run(() => { completionCallback(reader) });
+    } else {
+      reader.close();
+    }
+  })
+}
+
+let game = new TowersOfHanoi(reader);
+game.run(() => { completionCallback(reader)});
