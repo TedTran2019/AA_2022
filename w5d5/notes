@@ -1,0 +1,17 @@
+no block scope
+args in JS
+Array.from
+... (like Ruby's splat) in both ways
+ES6: default values
+arrow function vs this/that
+apply/call
+asynchronous
+node i/o is async
+module.exports, require
+namespace
+event loop! - cool. stack, web api, queue
+tagged template literals (template literal after function will trigger call with it as arg)
+import ... from ...
+export
+
+cmd shift c on dev tools to magnify glass
