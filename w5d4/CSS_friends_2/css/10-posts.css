@@ -1,0 +1,42 @@
+/* PHASE 4: Posts */
+.posts {
+  margin: 20px 0;
+}
+
+.post {
+  display: flex;
+  padding: 20px 0;
+  border-top: 1px solid lightgray;
+}
+
+.post:last-child {
+  border-bottom: 1px solid lightgray;
+}
+
+.post-main {
+  width: 500px;
+  margin: 0px 20px;
+}
+
+.post-body h3 {
+  margin: 0 0 10px 0;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.post-info, .post-nav {
+  display: flex;
+  font-size: 14px;
+}
+
+.post-info {
+  color: gray;
+}
+
+.post-info li, .post-nav li {
+  margin-right: 10px;
+}

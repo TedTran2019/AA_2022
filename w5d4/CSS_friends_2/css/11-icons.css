@@ -1,0 +1,57 @@
+/* PHASE 5: Icons */
+.icon-comment {
+  background-position: 0 0;
+}
+
+.icon-comment:hover {
+  background-position: 0 -25px;
+}
+
+.icon-reblog {
+  background-position: 0px -100px;
+}
+
+.icon-reblog:hover {
+  background-position: 0px -125px;
+}
+
+.icon-favorite {
+  background-position: 0px -50px;
+}
+
+.icon-favorite:hover {
+  background-position: 0px -75px;
+}
+
+[class*="icon-"] {
+  background-image: url('/Users/tedtran/Desktop/AA_2022/w5d4/CSS_friends_2/images/sprite.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  overflow: hidden;
+  width: 25px;
+  padding-top: 25px;
+  height: 0;
+  background-size: 25px 250px;
+}
+
+[class*="icon-small-"] {
+  width: 20px;
+  padding-top: 20px;
+  height: 0;
+}
+
+.icon-small-wall {
+  background-position: 0px -225px;
+}
+
+.icon-small-about {
+  background-position: 0px -175px;
+}
+
+.icon-small-friends {
+  background-position: 0px -150px;
+}
+
+.icon-small-photos {
+  background-position: 0px -200px;
+}
