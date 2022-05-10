@@ -19,4 +19,4 @@ polyfill
 transpile to ES5 -> babel
 
 open for html
-
+webpack --watch --mode=development
