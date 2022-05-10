@@ -1,0 +1,22 @@
+Implementing Prototypical inheritance
+Object.create -> surrogates
+Using .setPrototypeOf and changing .__proto__ has performance hits
+Animal.call(this, ...args) -> super
+Set prototype AND constructor
+extends will do Object.create, set prototype, set prototype.constructor, and allow super
+
+JS in browser -> webpack tool
+browser: single namespace (window)
+
+canvas
+
+async client-side code
+requestAnimationFrame
+event handlers
+environment
+
+polyfill
+transpile to ES5 -> babel
+
+open for html
+
