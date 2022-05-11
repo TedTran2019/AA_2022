@@ -78,8 +78,6 @@ Game.prototype.add = function(obj) {
   } else if (obj instanceof Bullet) {
     this.bullets.push(obj);
   }
-  console.log(this.bullets);
-  console.log(this.allObjects());
 }
 
 Game.prototype.remove = function(obj) {
