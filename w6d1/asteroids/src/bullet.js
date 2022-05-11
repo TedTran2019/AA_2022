@@ -11,4 +11,6 @@ Util.inherits(Bullet, MovingObject);
 Bullet.RADIUS = 5;
 Bullet.COLOR = 'red';
 
+Bullet.prototype.isWrappable = false;
+
 module.exports = Bullet;

@@ -90,6 +90,12 @@ Game.prototype.remove = function(obj) {
   }
 }
 
+Game.prototype.isOutOfBounds = function(pos) {
+  let x, y;
+  [x, y] = pos;
+  return x < 0 || y < 0 || x > Game.DIM_X || y > Game.DIM_Y
+}
+
 Game.DIM_X = 1200;
 Game.DIM_Y = 1200;
 Game.NUM_ASTEROIDS = 1;

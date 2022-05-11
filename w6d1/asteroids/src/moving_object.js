@@ -19,7 +19,11 @@ MovingObject.prototype.draw = function(ctx) {
 MovingObject.prototype.move = function() {
   this.pos[0] += this.vel[0];
   this.pos[1] += this.vel[1];
-  this.game.wrap(this.pos);
+  if ((!this.isWrappable) && this.game.isOutOfBounds(this.pos)) {
+    this.game.remove(this);
+  } else {
+    this.game.wrap(this.pos);
+  }
 }
 
 MovingObject.prototype.isCollidedWith = function(otherObject) {
@@ -32,5 +36,7 @@ MovingObject.prototype.collideWith = function(otherObject) {
   // this.game.remove(this);
   // this.game.remove(otherObject);
 }
+
+MovingObject.prototype.isWrappable = true;
 
 module.exports = MovingObject;

@@ -1,6 +1,7 @@
 const MovingObject = require("./moving_object");
 const Ship = require("./ship");
-const Util = require("./utils")
+const Util = require("./utils");
+const Bullet = require('./bullet');
 
 const Asteroid = function({pos, game}) {
   MovingObject.call(this, {pos, game});
@@ -14,6 +15,9 @@ Util.inherits(Asteroid, MovingObject);
 Asteroid.prototype.collideWith = function(otherObject) {
   if (otherObject instanceof Ship) {
     otherObject.relocate();
+  } else if (otherObject instanceof Bullet) {
+    this.game.remove(this);
+    this.game.remove(otherObject);
   }
 }
 
