@@ -1,0 +1,31 @@
+DOM
+window
+
+jquery:
+selection, manipulation:
+$/jquery 
+jquery obj
+add, remove, toggle Class
+parent, siblling, children
+append, remove, etc
+attr, text, val
+
+events:
+on, off
+currentTarget, preventDefault, target
+
+ready aka another way to call $, pass it a function:
+$: selector, HTML, wrapper, ready
+
+data attributes:
+data, k:v
+html data-*
+
+jquery event delegation
+1. traditional: bind one click handler to each li in ul
+2. event delegation: bind one click handler to ul
+jquery delegateTarget
+bubble up
+
+getPrototypeOf, setPrototypeOf
+Object.create
