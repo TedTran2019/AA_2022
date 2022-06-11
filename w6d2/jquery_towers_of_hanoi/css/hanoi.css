@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.hanoi {
+  width: 66%;
+  display: flex;
+  justify-content: space-between;
+  height: 30vh;
+}
+
+.tower {
+  border-bottom: 10px solid black;
+  width: 30%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.disc {
+  background-color: gray;
+  height: 30%;
+  border-radius: 40%;
+  margin-top: 1rem;
+}
+
+.selected {
+  border-color: red;
+}
+
+.selected:hover {
+  border-color: red;
+}
+
+.victory {
+  background-color: green;
+}
+
+.blue {
+  border-color: blue;
+}

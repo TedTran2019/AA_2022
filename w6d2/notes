@@ -29,3 +29,5 @@ bubble up
 
 getPrototypeOf, setPrototypeOf
 Object.create
+
+webpack --watch --mode=development
