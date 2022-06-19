@@ -1,3 +1,13 @@
 ajax -> async js and xml
 think soundcloud, gmail, etc
 rails <-> ajax
+browser already knows how to do this style of request all on its own
+staying on same page, firing a JS callback on success (serialize deserialize)
+
+callback hell -> promise -> async await (syntactic sugar for promises)
+promises: then, reject, catch, finally, Promise.all
+catch is just then(undefined, func)
+https://web.dev/promises/
+https://web.dev/async-functions/
+
+jqXHR (jquery version of 'promise', a deferred). fail instead of catch
