@@ -10,10 +10,40 @@ const APIUtils = {
       success() {
         console.log('Success');
       },
-      error() {
-        console.error("An error occurred.");
+      error(e) {
+        console.error(e);
       },
     });
+  },
+
+  searchUsers(queryVal) {
+    return $.ajax({
+      type: "GET",
+      dataType: 'json',
+      url: `/users/search`,
+      data: { query: queryVal },
+      success() {
+        console.log('Success');
+      },
+      error(e) {
+        console.error(e);
+      }
+    }); 
+  },
+
+  createTweet(data) {
+    return $.ajax({
+      type: "POST",
+      dataType: 'json',
+      url: `/tweets`,
+      data: data,
+      success() {
+        console.log('Success');
+      },
+      error(e) {
+        console.error(e);
+      }
+    }); 
   }
 };
 
