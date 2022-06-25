@@ -44,6 +44,21 @@ const APIUtils = {
         console.error(e);
       }
     }); 
+  },
+
+  fetchTweets(data) {
+    return $.ajax({
+      type: "GET",
+      dataType: 'json',
+      url: `/feed`,
+      data: { max_created_at: data },
+      success() {
+        console.log('Success');
+      },
+      error(e) {
+        console.error(e);
+      }
+    });   
   }
 };
 
