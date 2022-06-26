@@ -13,3 +13,8 @@ https://web.dev/async-functions/
 jqXHR (jquery version of 'promise', a deferred). fail instead of catch
 
 Routes can choose to default to json or whatever else instead of HTML.
+
+Review: N + 1 queries, ActiveRecord SQL, routes, Postman
+
+bundle install, rails db:setup, npm run webpack, rails server
+inside of application.js, requiring jquery, jquery_ujs, jquery.serializejson, require_tree .
