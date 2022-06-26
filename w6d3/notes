@@ -11,3 +11,5 @@ https://web.dev/promises/
 https://web.dev/async-functions/
 
 jqXHR (jquery version of 'promise', a deferred). fail instead of catch
+
+Routes can choose to default to json or whatever else instead of HTML.
