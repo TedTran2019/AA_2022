@@ -1,0 +1,68 @@
+triggering -> Think about it like, trigger THIS, then your listener(on) detects it
+event propagation: DOM events bubble, triggering all click handlers on the way up
+event.stopPropogation()
+
+target: innermost which triggered
+currentTarget: element on handler, changes through bubbling process
+
+History webi api: window.history, #forward(), #back()
+Location web api: window.location, @href, @hash
+
+Altering @hash fires a special hashchange event, can add event listener to this
+
+Why jQuery with Rails? Easy integration, but most places don't use jQuery anymore. 
+New vanilla JS is easily powerful enough.
+
+DOM elements: node, element, HTMLElement, HTMLCollection, Document
+Functionality: 
+- document 
+  #getElementById
+  #getElementByClassName
+- Element
+  #querySelectorAll
+- Event
+  #addEventListener
+- Node
+  appendChild
+  removeChild
+
+  Rails + AJAX? -> CSRF tokens handled, transform JSON into JS objs, more friendly
+  than XHR.
+
+  XHR: create XHR obj -> path, verb -> callback -> send request
+
+  Javascript: 10 days to create. ECMAScript standards, up to ES13 now.
+  https://tc39.es/ecma262/
+
+hoisting: JS hoists declarations by default. Can call b4 define
+'use strict' - pragma, rules for better code
+IIFE - Immediately-Invoked Function Expression, called after defined
+jQuery - JS library to manipulate DOM, most widely used
+MEAN stack - MongoDB, Express, Angular, Node
+Functional Programming - Function as first-class objs, don't mutate state, pure
+functions. Redux will use a lot of these concepts. There are libraries to force
+functional programming
+POJO - plain old JS object
+
+Browsers are made of millions of lines of code, what do they consist of?
+Main components: UI, browser engine, rendering engine, networking, JS interpreter, 
+UI backend, data storage
+
+Rendering engine: parse HTML to construct DOM tree -> construct render tree -> 
+layout information in coordinates -> paint the render tree (utilizes UI backend to 
+access OS drawing capabilities)
+
+HTML parsing: broken into HTML elements, rules applied
+Render tree construction: each element(frame/renderer) represents rectangular area, 
+how many traversals on average to apply styles?, find rules that apply to element then 
+order by specificity. Style sheets always loaded sync.
+
+Layout: can find pos. of all elemetns in a single pass, progresses recursively from 
+<html> element. Two diff. events can trigger layouts: global changes and incremental
+Global layout is sync, incremental is async
+
+Painting: background-color -> bg image -> border -> children -> outline
+Browsers try to do as least work as possible to respond to change
+
+https://web.dev/howbrowserswork/
+
