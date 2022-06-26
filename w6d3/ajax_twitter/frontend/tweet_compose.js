@@ -28,9 +28,10 @@ class TweetCompose {
     this.clearInput();
     $inputs.prop('disabled', false);
     const tweetUl = $(this.$form.data('tweets-ul'));
-    const tweetData = JSON.stringify(tweet.content);
-    const $li = $(`<li>${tweetData}</li>`);
-    tweetUl.prepend($li);
+    // const tweetData = JSON.stringify(tweet.content);
+    tweetUl.trigger('insert-tweet', tweet);
+    // const $li = $(`<li>${tweetData}</li>`);
+    // tweetUl.prepend($li);
     this.countChars();
     this.$form.find('.tweet-mentions').empty();
   }

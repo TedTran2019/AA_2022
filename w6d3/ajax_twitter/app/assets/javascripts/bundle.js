@@ -188,6 +188,7 @@ class InfiniteTweets {
     this.$feed = $el.find('#feed');
     this.maxCreatedAt = null;
     this.$el.on('click', '.fetch-more', this.fetchTweets.bind(this));
+    this.$el.on("insert-tweet", this.insertTweet.bind(this));
   }
 
   fetchTweets(event) {
@@ -213,6 +214,14 @@ class InfiniteTweets {
     } else {
       this.$el.find('.fetch-more').remove();
       this.$el.append('No more tweets');
+    }
+  }
+
+  insertTweet(event, tweet) {
+    const $li = $(`<li>${tweet.content}</li>`);
+    this.$feed.append($li);
+    if (this.maxCreatedAt === null) {
+      this.maxCreatedAt = tweet.created_at;
     }
   }
 }
@@ -257,9 +266,10 @@ class TweetCompose {
     this.clearInput();
     $inputs.prop('disabled', false);
     const tweetUl = $(this.$form.data('tweets-ul'));
-    const tweetData = JSON.stringify(tweet.content);
-    const $li = $(`<li>${tweetData}</li>`);
-    tweetUl.prepend($li);
+    // const tweetData = JSON.stringify(tweet.content);
+    tweetUl.trigger('insert-tweet', tweet);
+    // const $li = $(`<li>${tweetData}</li>`);
+    // tweetUl.prepend($li);
     this.countChars();
     this.$form.find('.tweet-mentions').empty();
   }

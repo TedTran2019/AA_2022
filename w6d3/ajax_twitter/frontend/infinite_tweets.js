@@ -6,6 +6,7 @@ class InfiniteTweets {
     this.$feed = $el.find('#feed');
     this.maxCreatedAt = null;
     this.$el.on('click', '.fetch-more', this.fetchTweets.bind(this));
+    this.$el.on("insert-tweet", this.insertTweet.bind(this));
   }
 
   fetchTweets(event) {
@@ -31,6 +32,14 @@ class InfiniteTweets {
     } else {
       this.$el.find('.fetch-more').remove();
       this.$el.append('No more tweets');
+    }
+  }
+
+  insertTweet(event, tweet) {
+    const $li = $(`<li>${tweet.content}</li>`);
+    this.$feed.append($li);
+    if (this.maxCreatedAt === null) {
+      this.maxCreatedAt = tweet.created_at;
     }
   }
 }
