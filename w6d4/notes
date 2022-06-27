@@ -66,3 +66,5 @@ Browsers try to do as least work as possible to respond to change
 
 https://web.dev/howbrowserswork/
 
+HTML page -> tree of DOM nodes
+properties of HTML elements
