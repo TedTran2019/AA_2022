@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const addPhoto = (container) => { 
     const photoInput = container.querySelector(".photo-url-input");
     const photoSubmit = container.querySelector(".photo-url-submit");
-    const photoList = container.querySelector("ul#dog-photos");
+    const photoList = document.querySelector("ul.dog-photos");
 
     photoSubmit.addEventListener("click", (e) => {
       e.preventDefault();
