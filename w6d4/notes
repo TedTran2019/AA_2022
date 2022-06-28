@@ -68,3 +68,5 @@ https://web.dev/howbrowserswork/
 
 HTML page -> tree of DOM nodes
 properties of HTML elements
+
+For GET requests, append a query string onto URL instead of passing in data obj
