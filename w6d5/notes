@@ -1,0 +1,72 @@
+React
+SPA
+Virtual DOM
+Diffing Algorithm
+JSX - Syntax extension to Javascript
+Enzyme -> Testing library for React output
+Jest -> Testing framework for React
+
+Why React? -> Efficient re-renders handled by it
+
+Vue, Angular, Ember -> other libraries/frameworks
+React Native -> mobile apps in JS!
+
+npm init --yes
+Think of: gemfile -> bundle install vs package.json -> npm install
+bundle exec command vs command (Gemfile-specified ver. vs local ver of command)
+Same for npm packages, scripts key -> npm run script
+ex. "webpack": "webpack --mode=development"
+
+Always use a .gitignore when utilizing npm
+As always, no node_modules or bundle.js or bundle.js.map
+
+webpack.config.js -> entry file and output file
+For Rails projects: Ensure bundle.js is in app/assets/javascripts so it's included
+in the asset pipeline
+devtool: 'source-map' to see line # for errors 
+resolve key lets you specify what file extensions to process
+
+Object Destructuring
+Import/Export vs module.exports + require
+export as defined, or export { function, function, function }
+for single obj, export default ExampleObj
+
+For export default: import ExampleObj from 'path'
+For export: import {func1, func2} from 'path' OR import * AS Example if you want everything
+
+React Dev Tools: Simple af google chrome extension
+component hierarchy + internal state
+
+Thinking in React: 
+1. [Break UI into component hierarchy](https://reactjs.org/docs/thinking-in-react.html)
+(single responsibility principle)
+2. Build static version
+  a. Use props: pass data from parent to child. **DO NOT USE STATE AT ALL FOR 
+      BUILDING THE STATIC VERSION**. Props are passed to the component while 
+      state is managed WITHIN the component.
+  b. For complex, start bottom-up (and test). For simple, top-down.
+3. Identify minimal (but complete) representation of UI state
+  a. It's not state if: it's passed in, it remains unchanged, or you can calc. it
+      based on other state/props.
+4. Identify which component mutate/owns which state
+  a. Pick a component that's above all the component that needs said state
+  b. If none makes sense, make one!
+5. Inverse data flow! -> Callbacks triggered by event listeners
+  a. Since components should only update own state, use callbacks.
+
+Explicit vs Implicit? 
+
+Hooks: use state/other React features w/o writing a class
+this.setState in class vs useState hook
+Built-in hooks vs building your own
+https://www.npmjs.com/package/eslint-plugin-react-hooks
+https://reactjs.org/docs/hooks-state.html
+----------------------------------------------
+React transpilation -> Babel to transpile
+js, jsx
+presets? es2015, react
+
+functional components
+same jsx, key to identify
+
+lifecycle methods
