@@ -93,3 +93,13 @@ Synthetic Events aka React's ver. of event handlers
 https://reactjs.org/docs/getting-started.html
 https://reactjs.org/tutorial/tutorial.html
 ----------------------------------------------------------------
+webpack
+webpack-cli
+@babel/core
+@babel/preset-env
+@babel/preset-react
+babel-loader
+react
+react-dom
+
+webpack.config.js w/ babel, entry/output, devtool, .js/.jsx handled
