@@ -6,7 +6,7 @@ JSX - Syntax extension to Javascript
 Enzyme -> Testing library for React output
 Jest -> Testing framework for React
 
-Why React? -> Efficient re-renders handled by it
+Why React? -> Efficient re-renders handled by it. Library for creating UI components
 
 Vue, Angular, Ember -> other libraries/frameworks
 React Native -> mobile apps in JS!
@@ -70,3 +70,26 @@ functional components
 same jsx, key to identify
 
 lifecycle methods
+component...WillMount, DidMount, WillReceiveProps, WillUpdate, DidUpdate, WillUnmount, etc
+
+implicit returns ()
+---------------------------------------------
+Why React? -> As app grows complex, managing callbacks/event handlers becomes
+unwiedly. Re-renders all elements when state of app changes
+-> Nearly as fast as isolating the changing element due to virtual DOM
+Simple interface -> just describe the UI!
+diffing algo -> reconciliation -> absolute minimum change
+
+JSX is similar to ERB
+Components -> JS funcs that return HTML
+Component Declaration -> 
+1. extends React.Component
+2. purely functional components
+
+lifecycle methods: if need to run other bits of code at various points of lifecycle
+
+Synthetic Events aka React's ver. of event handlers
+
+https://reactjs.org/docs/getting-started.html
+https://reactjs.org/tutorial/tutorial.html
+----------------------------------------------------------------
