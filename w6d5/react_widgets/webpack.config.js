@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   context: __dirname,
@@ -24,5 +25,8 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: [".js", ".jsx", "*"]
-  }
+  },
+  plugins: [
+    new Dotenv()
+  ]
 };

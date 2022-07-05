@@ -125,6 +125,28 @@ function Tabs(props) {
 
 /***/ }),
 
+/***/ "./src/weather.jsx":
+/*!*************************!*\
+  !*** ./src/weather.jsx ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function Weather(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Weather"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Weather);
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/cjs/react-dom.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
@@ -33589,6 +33611,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clock */ "./src/clock.jsx");
 /* harmony import */ var _tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabs */ "./src/tabs.jsx");
+/* harmony import */ var _weather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./weather */ "./src/weather.jsx");
+
 
 
 
@@ -33599,7 +33623,7 @@ document.addEventListener("DOMContentLoaded", function () {
   root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_clock__WEBPACK_IMPORTED_MODULE_2__["default"], {
     days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  }), ",", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), ",", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_weather__WEBPACK_IMPORTED_MODULE_4__["default"], null), ",", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
     tabs: [{
       title: "Tab1",
       content: "Content1"

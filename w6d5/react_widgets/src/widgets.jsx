@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client'
 import Clock from './clock';
 import Tabs from './tabs';
+import Weather from './weather';
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("root");
@@ -11,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <Clock 
         days={["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]}
         months={["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
+      />,
+      <Weather 
+        
       />,
       <Tabs 
         tabs={
