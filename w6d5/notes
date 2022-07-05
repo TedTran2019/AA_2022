@@ -103,3 +103,20 @@ react
 react-dom
 
 webpack.config.js w/ babel, entry/output, devtool, .js/.jsx handled
+--------------------------------------------
+npx create-react-app my-app --template typescript
+(Just to get things ready quick instead of manually configuring with Babel/Webpack)
+https://tailwindcss.com/docs/guides/create-react-app
+npm outdated
+npm update --save
+
+React app w/ Typescript and Tailwind
+Use hooks, not classes!
+
+Imo, if you're going to put all this effort into learning the most modern version 
+of React, you should do the same for Rails as well. E.g, learn from scaffolding 
+
+Rails 7 + learn asset pipeline + Tailwind + latest best practices
+Rail 7 uses hotwire so no more dealing with webpacker!
+https://www.hotrails.dev/turbo-rails
+https://www.simplethread.com/how-to-create-a-new-rails-7-app-with-tailwind/

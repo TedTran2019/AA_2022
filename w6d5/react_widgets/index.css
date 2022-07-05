@@ -1,0 +1,85 @@
+.clock {
+  width: 60vw;
+  height: 20vh;
+  margin: 0 auto;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+.clock > h1 {
+  width: 100%;
+  height: 20%;
+  margin: 10px;
+  font-size: 36px;
+}
+
+.dateTime {
+  border: 2px solid black;
+  width: 100%;
+  height: 80%;
+  background-color: orange;
+  padding: 15px;
+}
+
+.time, .date {
+  display: flex;
+  color: white;
+  height: 50%;
+  justify-content: space-between;
+}
+
+.tabs {
+  width: 30vw;
+  height: 40vh;
+  margin: 0 auto;
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.tabs > h1 {
+  width: 100%;
+  height: 15%;
+  margin: 10px;
+  font-size: 36px;
+}
+
+.tab-content {
+  height: 85%;
+}
+
+.tab-headers {
+  display: flex;
+  justify-content: space-between;
+  height: 20%;
+}
+
+.tab-headers > li {
+  padding: 10px;
+  border-radius: 30px 30px 0px 0px;
+  border: 2px solid black;
+  background-color: lightblue;
+  width: 33.33%;
+}
+
+.tab-headers > li:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.tab-content > article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  color: white;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  background-color: lightblue;
+}
+
+#tab-selected {
+  border-bottom: none;
+}
