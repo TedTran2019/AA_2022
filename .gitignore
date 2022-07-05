@@ -82,3 +82,6 @@
 
 # Built Visual Studio Code Extensions
 **/.vsix
+
+# Webpack generated files
+**/dist/
