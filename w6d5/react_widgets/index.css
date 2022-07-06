@@ -84,3 +84,95 @@
   border-bottom: none;
 }
 
+.weather {
+    width: 60vw;
+    height: 20vh;
+    margin: 0 auto;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+.weather > h1 {
+    width: 100%;
+    height: 20%;
+    margin: 10px;
+    font-size: 36px;
+}
+
+.weather-body {
+  border: 2px solid black;
+  width: 100%;
+  height: 80%;
+  background-color: green;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loading {
+  justify-content: center;
+}
+
+.tabs-autocomplete {
+  display: flex;
+  justify-content: space-between;
+}
+
+.autocomplete {
+  width: 30vw;
+  height: 40vh;
+  margin: 0 auto;
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.autocomplete > h1 {
+  width: 100%;
+  height: 15%;
+  margin: 10px;
+  font-size: 36px;
+}
+
+.autocomplete-body {
+  border: 2px solid black;
+  width: 100%;
+  height: 85%;
+  background-color: purple;
+  padding: 15px;
+}
+
+.search-bar {
+  height: 20%;
+  width: 80%;
+  border: 2px solid black;
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0px 0px 0px 5px lightblue inset;
+  margin: 0 auto;
+  display: block;
+}
+
+.searched-names {
+  height: 80%;
+  color: white;
+  list-style-type: square;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+/* Making the scrollbar visible and changing its appearance */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
