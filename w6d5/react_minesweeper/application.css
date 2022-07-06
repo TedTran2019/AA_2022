@@ -1,0 +1,46 @@
+html {
+  height: 100%;
+}
+
+.game {
+  height: 600px;
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game > h1 {
+  font-size: 2em;
+  font-weight: 700;
+  padding: 0.5em;
+}
+
+.grid {
+  display: flex;
+  margin: 0.5em;
+  width: 50%;
+  height: 50%;
+  background-color: lightgray;
+}
+
+.row {
+  width: 100%;
+  height: calc(100% / 9);
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-right-style: outset;
+  border-bottom-style: outset;
+  border-color: white;
+  border-width: 3px;
+}
+
+.flagged {
+  color: red;
+}
