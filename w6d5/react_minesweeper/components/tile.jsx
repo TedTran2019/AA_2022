@@ -4,16 +4,17 @@ function Tile(props) {
   let tileClass = "";
   let text = "";
 
-  const handleClick = function(event) {
+  const handleClick = (event) => {
     let flagged = event.altKey ? true : false;
     props.updateGame(props.tile, flagged);
   }
-
+  
   if (props.tile.explored) {
     if (props.tile.bombed) {
       text = "\u2622"
+      tileClass = "flagged";
     } else {
-      let bombCount = props.tiles.adjacentBombCount();
+      let bombCount = props.tile.adjacentBombCount();
       tileClass = "safe";
       if (bombCount !== 0) {
         text = bombCount; 

@@ -44,3 +44,40 @@ html {
 .flagged {
   color: red;
 }
+
+.safe {
+  border-style: inset;
+}
+
+.modal-screen {
+  z-index: 998;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+  z-index: 999;
+  position: absolute;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 200px;
+  height: 100px;
+  top: 50%;
+  left: 50%;  
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content > button {
+  background-color: lightgray;
+  border: 1px solid black;
+  padding: 5px;
+}

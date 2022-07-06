@@ -5,7 +5,7 @@ function Board(props) {
   return (
     <div className="grid">
       {
-        props.board.map((row, rowIndex) => {
+        props.board.grid.map((row, rowIndex) => {
           return <div key={rowIndex} className="row">
             {row.map((tile, tileIndex) => {
               return <TileGame
