@@ -1,0 +1,62 @@
+Redux: JS framework for managing frontend state
+Updates state using pure functions called reducers
+1. Single truth source
+2. Read only state
+3. Change w/ pure functions
+Can easily undo/replay because same input -> same output
+- State/Store/Action/Pure func/Reducers/Middleware/Time Travelling dev tools/Thunks
+
+GraphQL: query lang to request info from backend server
+
+Flux: a pattern to structure one's application
+action: begins flow of data, obj. that handles change on application's state
+dispatcher: dispatch actions to a store
+store: represents entire state of app
+view: render user interface
+
+redux:
+state - update app state via reducer, broadcasting state to view via subscription,
+and listen for actions for when/how to change global state
+- createStore()
+  - getState()
+  - dispatch(action)
+  - subscribe(callback)
+
+reducer(state, action) -> looks at action.type to choose an action, then return next state
+- IMMUTABLE STATE
+- Object.freeze just in case, same as Ruby .freeze
+- reducer composition
+- combineReducers()
+- delegating reducer funcs to subordinate reducers
+
+action
+- action creators
+
+react-redux package
+- threading props = anti-pattern
+- Provider/connect API circumvents the above
+
+Provider:
+  context -  share values btwn components without explicitly passing down (think global)
+  connect - how and what?
+  - "Containers", presentational components vs containers (how things work)
+  - Selectors - filter state
+
+BOM -> window pojo
+https://developer.mozilla.org/en-US/docs/Web/API/Window
+Testing by attaching to window
+
+UI/UX - car! Feeling of driving a car vs steering wheel, break, etc
+  - design great billboards (convention, visual hierarchies, elminate distractions)
+  - make it mindless (low expectations)
+  - simple, guide users, expected behavior/location, user test
+  - Affordance, Signifier(Explicit, pattern, metaphor, negative)
+  - Lookin' good: layout, whitespace, grid pattern, hierarchy, constrained palette, 
+    google fonts (fontpair.co), forms (design better forms), emulate others
+  - images: unsplash, don't host yourself (Cloudinary/reduce size)
+  - logo and tagline
+  - accessibility aka low-hanging fruit - alt text, correct headings, semantic tags, 
+    no flashing stuff, info given by color shoud be explicit
+  - accessible typefaces
+
+  
