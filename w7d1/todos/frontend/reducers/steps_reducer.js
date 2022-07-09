@@ -1,20 +1,21 @@
-import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO } from "../actions/todo_actions";
+import { RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP } from "../actions/step_actions";
 
-const todosReducer = (state = initialState, action) => {
+
+const stepsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVE_TODOS:
+    case RECEIVE_STEPS:
       const newState = {};
-      action.todos.forEach(todo => {
-        newState[todo.id] = todo;
+      action.steps.forEach(step => {
+        newState[step.id] = step;
       })
       return newState;
-    case RECEIVE_TODO:
-      const newTodo = { [action.todo.id]: action.todo };
-      return Object.assign({}, state, newTodo);
-    case REMOVE_TODO:
+    case RECEIVE_STEP:
+      const newStep = { [action.step.id]: action.step };
+      return Object.assign({}, state, newStep);
+    case REMOVE_STEP:
       const removeState = {};
       for (let key in state) {
-        if (key !== String(action.todo.id)) {
+        if (key !== String(action.step.id)) {
           removeState[key] = state[key];
         }
       }
@@ -24,7 +25,7 @@ const todosReducer = (state = initialState, action) => {
   }
 };
 
-export default todosReducer;
+export default stepsReducer;
 
 const initialState = {
   1: {

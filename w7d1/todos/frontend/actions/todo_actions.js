@@ -23,5 +23,6 @@ export const removeTodo = (todo) => {
   };
 };
 
-// window.receiveTodo = receiveTodo;
-// window.receiveTodos = receiveTodos;
+window.receiveTodo = receiveTodo;
+window.receiveTodos = receiveTodos;
+window.removeTodo = removeTodo;
