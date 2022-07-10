@@ -1,0 +1,35 @@
+Higher Order Funcs -> funcs that receive or return other funcs
+callbacks - funcs passed as parameters
+closure - uses free vars outside of scope
+composing funcs, currying funcs
+ES6 fat arrow funcs makes it easy to write HOF
+
+Redux middleware: enhancer
+- resolve action, pass along action, generate side effect, send another dispatch, 
+or a combination
+
+Function signature - set of input/output of a func. 
+Redux middleware all follow same signature
+redux-logger (must be last middleware passed)
+
+Thunks: kind of action creator that returns func instead of obj.
+  - func can dispatch 1+ actions
+  - used for async
+  - action(dispatch)
+
+  Object.freeze(state) - NO MUTATION (It's not a deep freeze tho)
+
+namespace - subset of controllers that live under a specific URL
+
+To debug arrow funcs, make sure it has explicit return
+
+dispatch request -> middleware -> api -> dispatch response -> middleware -> reducer -> rerender
+
+With ambiguity in fat arrow funcs, {} will return an empty block unless 
+wrapped around with parentheses.
+
+Arguments in JS: take less args (undefined) or more args (in arguments array-like obj)
+Array.from on array-likes
+Rest operator: ... like Ruby's * splat operator
+Spread Syntax: ... Also like Ruby's * splat operator for destructuring elements
+Default values in JS!
