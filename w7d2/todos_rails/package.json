@@ -8,7 +8,7 @@
     "@babel/runtime": "7",
     "babel-loader": "8",
     "compression-webpack-plugin": "9",
-    "shakapacker": "6.5.0",
+    "shakapacker": "6.4.0",
     "terser-webpack-plugin": "5",
     "webpack": "5",
     "webpack-assets-manifest": "5",
