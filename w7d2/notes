@@ -39,3 +39,17 @@ connect API is outdated
 Separating Redux logic into folders by type is also outdated
 https://react-redux.js.org/tutorials/connect -> Learn modern practices here later
 
+NEVER MUTATE STATE.
+REDUCERS MUST BE PURE
+STATE/ACTIONS SHOULD NEVER HAVE NON-SERIALIZABLE VALUES
+ONLY ONE REDUX STORE PER APP
+USE REDUX TOOLKIT -> IMMER FOR IMMUTABLE UPDATES -> FEATURE FOLDER APPROACH
+JAM LOGIC INTO REDUCERS -> REDUCERS OWN STATE SHAPE -> NAMES... DATA TYPES, NOT COMPONENTS
+NORMALIZE DATA, ACTIONS AS EVENTS, Smallest component reads from store, obj shorthand form of dispatch
+call useSelector many times instead of 1 obj, use Typescript, pojo for state, 
+don't put form state in Redux (Remember that Redux is for GLOBAL state)
+https://redux.js.org/style-guide/
+
+Action creators, container/presentational pattern, thunks, etc.
+ReduxJS reselect -> for creating memoized selectors, name as selectThing
+
