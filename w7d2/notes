@@ -53,3 +53,14 @@ https://redux.js.org/style-guide/
 Action creators, container/presentational pattern, thunks, etc.
 ReduxJS reselect -> for creating memoized selectors, name as selectThing
 
+Modern best practices make this way easier, tbh. 
+- Store using configureStore that takes reducers
+- reducers and action creators made using createSlice
+- selectors handled by useSelector and dispatch handled by useDispatch 
+  a. aka no more mapping over props
+- All the logic where it makes sense, less redirection.
+
+rails g model ___ --no-test-framework
+jquery slim doesn't have AJAX lmao...
+
+rails new ___ --api -> No views n' stuff
