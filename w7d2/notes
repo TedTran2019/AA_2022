@@ -33,3 +33,9 @@ Array.from on array-likes
 Rest operator: ... like Ruby's * splat operator
 Spread Syntax: ... Also like Ruby's * splat operator for destructuring elements
 Default values in JS!
+
+Don't name your props object keys props
+connect API is outdated
+Separating Redux logic into folders by type is also outdated
+https://react-redux.js.org/tutorials/connect -> Learn modern practices here later
+

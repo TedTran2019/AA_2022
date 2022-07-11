@@ -22,7 +22,3 @@ export const removeTodo = (todo) => {
     todo,
   };
 };
-
-window.receiveTodo = receiveTodo;
-window.receiveTodos = receiveTodos;
-window.removeTodo = removeTodo;
