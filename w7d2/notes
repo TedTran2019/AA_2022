@@ -64,3 +64,10 @@ rails g model ___ --no-test-framework
 jquery slim doesn't have AJAX lmao...
 
 rails new ___ --api -> No views n' stuff
+
+https://github.com/rails/jsbundling-rails/blob/main/docs/switch_from_webpacker.md
+That was actually a massive pain. 
+- set up Rails with -j webpack
+- yarn add instead of npm install 
+- Setup webpack
+- Configure Babel in package.json
