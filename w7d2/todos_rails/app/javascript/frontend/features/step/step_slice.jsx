@@ -16,7 +16,7 @@ export const stepSlice = createSlice({
     },
     addStep: (state, action) => {
       state.push(action.payload);
-      return state.last;
+      return state;
     },
     removeStep: (state, action) => {
       state = state.filter(step => {
