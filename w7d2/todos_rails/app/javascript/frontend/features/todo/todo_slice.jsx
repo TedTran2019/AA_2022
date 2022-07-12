@@ -9,7 +9,7 @@ const initialState = [
 ]
 
 export const fetchTodos = createAsyncThunk(
-  'api/todos', // Action Type
+  'api/todos/index', // Action Type
   async () => { // Callback function
     const response = await fetch('/api/todos')
     return response.json()
@@ -37,6 +37,60 @@ export const createTodo = createAsyncThunk(
         return rejectWithValue(response.status); // Returns failed promise to trigger createTodo.rejected
       }
     } catch(error) {
+      dispatch(addError(error.message));
+      return rejectWithValue(error);
+    }
+  }
+)
+
+export const deleteTodo = createAsyncThunk(
+  'api/todos/delete',
+  async (todo, { dispatch, getState, rejectWithValue, fulfillWithValue }) => {
+    try {
+      const csrfToken = await getCSRF();
+      const response = await fetch(`/api/todos/${todo.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken
+        },
+        body: JSON.stringify(todo)
+      })
+      if (response.ok) {
+        dispatch(clearError());
+        return response.json(); // Returns Todo
+      } else {
+        dispatch(addError(response.statusText));
+        return rejectWithValue(response.status); // Returns failed promise to trigger createTodo.rejected
+      }
+    } catch (error) {
+      dispatch(addError(error.message));
+      return rejectWithValue(error);
+    }
+  }
+)
+
+export const updateTodo = createAsyncThunk(
+  'api/todos/update',
+  async (todo, { dispatch, getState, rejectWithValue, fulfillWithValue }) => {
+    try {
+      const csrfToken = await getCSRF();
+      const response = await fetch(`/api/todos/${todo.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken
+        },
+        body: JSON.stringify({done: !todo.done})
+      })
+      if (response.ok) {
+        dispatch(clearError());
+        return response.json(); // Returns Todo
+      } else {
+        dispatch(addError(response.statusText));
+        return rejectWithValue(response.status); // Returns failed promise to trigger createTodo.rejected
+      }
+    } catch (error) {
       dispatch(addError(error.message));
       return rejectWithValue(error);
     }
@@ -94,6 +148,35 @@ export const todoSlice = createSlice({
     },
     [createTodo.rejected]: (state, action) => {
       console.log('Failed to create Todo!');
+    },
+    [deleteTodo.pending]: (state, action) => {
+      console.log('Todo deletion promise pending!');
+    },
+    [deleteTodo.fulfilled]: (state, action) => {
+      console.log('Todo deletion promise fulfilled!');
+      state = state.filter(todo => {
+        return todo.id !== action.payload.id
+      })
+      return state;
+    },
+    [deleteTodo.rejected]: (state, action) => {
+      console.log('Failed to delete Todo!');
+    },
+    [updateTodo.pending]: (state, action) => {
+      console.log('Todo update pending!');
+    },
+    [updateTodo.fulfilled]: (state, action) => {
+      console.log('Todo update fulfilled!');
+      state.forEach(todo => {
+        if (todo.id === action.payload.id) {
+          todo.done = action.payload.done;
+          return todo;
+        }
+      })
+      return state;
+    },
+    [updateTodo.rejected]: (state, action) => {
+      console.log('Failed to update Todo!');
     }
   }
 })

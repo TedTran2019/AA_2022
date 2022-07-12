@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeTodo, toggleTodo } from './todo_slice';
 import TodoDetailView from './todo_detail_view';
+import { updateTodo, deleteTodo } from './todo_slice';
 
 export default function TodoListItem ({todo}) {
   const [detail, setDetail] = useState(false);
@@ -10,11 +11,13 @@ export default function TodoListItem ({todo}) {
 
   const remove = (e) => {
     e.preventDefault();
-    dispatch(removeTodo(todo.id));
+    // dispatch(removeTodo(todo.id));
+    dispatch(deleteTodo(todo));
   }
 
   const toggle = (e) => {
-    dispatch(toggleTodo(todo.id));
+    //dispatch(toggleTodo(todo.id));
+    dispatch(updateTodo(todo));
   }
 
   const showDetails = (e) => {
