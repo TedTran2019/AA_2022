@@ -1,1 +1,10 @@
+<% if logged_in? %>
+  <ul>
+    <li><%= current_user.username %></li>
+    <li><%= button_to 'Sign out!', session_url, method: :delete %></li>
+  </ul>
+<% else %>
+  <%= link_to 'Sign In!', new_session_url %>
+<% end %>
+
 <div id='root'></div>

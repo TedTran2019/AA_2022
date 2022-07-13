@@ -2,15 +2,17 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { addStep } from './step_slice';
+import { createStep } from './step_slice';
 
-export default function StepForm ({todoId}) {
+export default function StepForm ({todo_id}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
-  const createStep = (e) => {
+  const makeStep = (e) => {
     e.preventDefault();
-    dispatch(addStep({ title, body, done: false, id: Date.now(), todoId: todoId }));
+    // dispatch(addStep({ title, body, done: false, id: Date.now(), todoId: todoId }));
+    dispatch(createStep({ title, body, done: false, todo_id: todo_id }));
     setTitle('');
     setBody('');
   }
@@ -26,7 +28,7 @@ export default function StepForm ({todoId}) {
   return (
     <div>
       <h2>Step Form</h2>
-      <form onSubmit={createStep}>
+      <form onSubmit={makeStep}>
         <input type="text" onChange={handleTitleChange} value={title} placeholder="title" />
         <textarea onChange={handleBodyChange} value={body} placeholder="body" cols="30" rows="10"></textarea>
         <button type="submit">Add Step</button>

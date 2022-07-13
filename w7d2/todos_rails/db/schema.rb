@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_12_020915) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_13_065618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "steps", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "body", null: false
+    t.boolean "done", default: false
+    t.integer "todo_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["todo_id"], name: "index_steps_on_todo_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "todo_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["todo_id"], name: "index_taggings_on_todo_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
 
   create_table "todos", force: :cascade do |t|
     t.string "title", null: false
@@ -20,7 +46,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_12_020915) do
     t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["title"], name: "index_todos_on_title"
+    t.index ["user_id"], name: "index_todos_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "password_digest", null: false
+    t.string "session_token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "todos"
 end

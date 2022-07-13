@@ -1,0 +1,10 @@
+<h1>New User Form</h1>
+<%= form_with model: @user do |form|  %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <%= form.submit 'Create New User' %>
+<% end %>
+
+<%= link_to 'Login instead?', new_session_url %>

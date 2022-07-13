@@ -1,0 +1,10 @@
+<h1>Login!</h1>
+<%= form_with url: session_url, method: :POST do |form|  %>
+  <%= form.label 'username' %>
+  <%= form.text_field 'user[username]'%>
+  <%= form.label 'password' %>
+  <%= form.password_field 'user[password]' %>
+  <%= form.submit 'Login!' %>
+<% end %>
+
+<%= link_to 'Create New User Instead?', new_user_url %>
