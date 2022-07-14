@@ -14,3 +14,20 @@ redux devtools extension!
 N+1 queries
 
 CSS review (again)
+----------------------------------------
+
+You can have extraReducers call reducers. 
+  - Etc: todoSlice.caseReducers.addTodo(state, action);
+  - aka reducers can call other reducers
+https://redux-toolkit.js.org/api/createSlice
+ - Reducers can independently respond to same action type, extraReducers allow this
+ - think of the [counter.actions.increment] example or the [fetchArticle.fulfilled] in 3 slices 
+  - all slices receive all actions!
+ - "if any other part of the application happens to dispatch an action with the exact same type string, the corresponding reducer will be run"
+**Thunks can dispatch actions or other thunks as well**
+Remember that thunks have more use cases than just async!
+Also, in the future, use RTK's query API for projects after this one.
+- combineReducers to make nested state in store
+
+ "case reducer"
+ 
