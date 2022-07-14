@@ -87,3 +87,6 @@
 **/dist/
 **/bundle.js
 **/bundle.js.map
+
+# Anything ending with .map
+**/*.map
