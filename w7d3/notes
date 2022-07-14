@@ -1,0 +1,16 @@
+jbuilder: create json views, .json.jbuilder
+json.<key>, json.extract!, json.set!
+
+-- namespace :api, defaults: { format: :json } 
+
+normalizing state shape
+aka have connected parent components pass item IDs to children
+'relational' tables under a common parent key such as entities
+Normalizr library(No longer maintained)
+
+Lodash, generateId func, Redux-ORM
+
+redux devtools extension!
+N+1 queries
+
+CSS review (again)
