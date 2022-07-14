@@ -1,11 +1,11 @@
 class Api::PartiesController < ApplicationController
   def index
-    @parties = Party.all
+    @parties = Party.all.includes(:guests)
     render :index
   end
 
   def show
-    @party = Party.find_by(id: params[:id])
+    @party = Party.where(id: params[:id]).includes(:guests => [:gifts])[0]
     render :show
   end
 end
