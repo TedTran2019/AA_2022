@@ -54,6 +54,7 @@ GEM
     activerecord (7.0.3.1)
       activemodel (= 7.0.3.1)
       activesupport (= 7.0.3.1)
+    activerecord-reset-pk-sequence (0.2.1)
     activestorage (7.0.3.1)
       actionpack (= 7.0.3.1)
       activejob (= 7.0.3.1)
@@ -100,6 +101,8 @@ GEM
     debug_inspector (1.1.0)
     digest (3.1.0)
     erubi (1.10.0)
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -224,12 +227,14 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  activerecord-reset-pk-sequence
   annotate
   better_errors
   binding_of_caller
   bootsnap
   capybara
   debug
+  faker
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
