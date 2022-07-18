@@ -16,6 +16,7 @@
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^8.2.5",
     "dom": "^0.0.3",
+    "http-server": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.3.0",

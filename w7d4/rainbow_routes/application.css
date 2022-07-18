@@ -60,7 +60,9 @@ h3 {
   height: 100px;
 }
 
-.active {}
+.active {
+  font-weight: 700;
+}
 
 a {
   display: block;

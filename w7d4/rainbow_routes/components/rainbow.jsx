@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Route,
   Link,
-  NavLink
+  NavLink,
+  Outlet
 } from 'react-router-dom';
 
 import Red from './red';
@@ -14,11 +15,11 @@ export default function Rainbow() {
   return (
     <div>
       <h1>Rainbow Router!</h1>
-      {/* Your links should go here */}
-
-      <div id="rainbow">
-        {/* Your routes should go here */}
-      </div>
+      <Link to="/red">Red</Link>
+      <Link to="/green">Green</Link>
+      <Link to="/blue">Blue</Link>
+      <Link to="/violet">Violet</Link>
+      <Outlet />
     </div>
   );
 }
