@@ -1,0 +1,11 @@
+React Router: [Docs](https://github.com/remix-run/react-router/blob/main/docs/getting-started/installation.md#basic-installation)
+[Usage Docs](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
+BrowserRouter, Route and props. Path, exact, element vs render
+wildcard segments
+[Hooks](https://v5.reactrouter.com/web/api/Hooks)
+props: location, match info, history
+
+raise/rescue vs throw/catch
+module extend(class methods) vs include(instance methods)
+
+link-> to, NavLink, Switch, withRouter, Redirect, advanced containers
