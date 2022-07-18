@@ -28,3 +28,12 @@
   background-color: red;
   padding: 10px;
  }
+
+ .pokemon-body {
+  display: flex;
+  justify-content: space-evenly;
+ }
+
+ .pokemon-items {
+  display: flex;
+ }

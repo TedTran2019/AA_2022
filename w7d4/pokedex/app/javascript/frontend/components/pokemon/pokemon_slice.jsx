@@ -24,9 +24,7 @@ export const pokemonSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchAllPokemon.fulfilled]: (state, action) => {
-      console.log(state);
-      console.log(action.payload);
-      state = action.payload;
+      state = Object.assign({}, action.payload, state); // Stop overwriting more-info entries
       return state;
     },
     [fetchOnePokemon.fulfilled]: (state, action) => {

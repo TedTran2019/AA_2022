@@ -13,8 +13,7 @@ export default function PokemonIndex() {
   }, []);
 
   return (
-    <div>
-      <h1>Pokemon Index</h1>
+    <div className="pokemon-body">
       <ul>
         {pokemon.map(poke => (
           <PokemonIndexItem key={poke.id} pokemon={poke} />
