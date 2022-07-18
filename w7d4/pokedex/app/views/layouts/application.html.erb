@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pokedex</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script type="text/javascript">
+      window.POKEMON_TYPES = <%=raw Pokemon::TYPES %>
+      window.images = {
+        pokeLogo: "<%= image_url("pokemon-logo.svg") %>"
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <img width="50" height="50" src="<%= image_url("pokeball.svg") %>" alt="pokedex">
+    </header>
+    <%= yield %>
+  </body>
+</html>
