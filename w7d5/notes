@@ -1,0 +1,31 @@
+Frontend Auth:
+Rails Auth -> password_digest, session_token.
+Frontend Auth -> match routes, current_user -> in state!, restricting access, 
+bootstrap current_user.
+Diffs: Rails views -> React components, HTTP requests -> AJAX requests
+
+preloaded state
+conditional in render, 'Auth' and 'Protected' wrappers
+bootstrap current_user onto window lol
+
+current_user to preloadedState: AJAX req to fetch, set on window, localStorage,
+as a data attribute in head of root route
+
+Checklist:
+1. I prefer -G for no git and -j webpack, --database=postgresql
+2. better_errors, binding_of_caller, pry-rails, annotate are useful gems for development
+3. gitignore of course to ignore all the Rails/React/Node stuff
+4. npm init --y, then install webpack, webpack-cli, react, react-dom, react-router-dom,
+redux, react-redux, @babel/core, @babel/preset-react, @babel/preset-env, babel-loader, etc
+5. webpack.config.js and package.json configuration. Remember da source-map devtool
+
+React context
+useContext() -> grabs value from context of nearest MyContext.Provider above calling component in tree
+Ex. const ThemeContext = React.createContext(themes.light);
+<ThemeContext.Provider> wrapped around used component
+
+Window.localStorage API: setItem, getItem, removeItem, clear, etc. 
+
+Active Storage + AWS + React to upload images (for BenchBnb?)
+
+Rails auth review: bcrypt, user model, controllers, views, routes, etc.
