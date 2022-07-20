@@ -12,9 +12,10 @@ export default function PokemonForm () {
   const [defense, setDefense] = useState('');
   const [moveOne, setMoveOne] = useState('');
   const [moveTwo, setMoveTwo] = useState('');
-  const types = ["bug", "dragon", "electric", "fighting", "fire", "flying", "ghost",
-                "grass", "ground", "ice", "normal", "poison", "psychic", "rock",
-                "steel", "water"]
+  // const types = ["bug", "dragon", "electric", "fighting", "fire", "flying", "ghost",
+  //               "grass", "ground", "ice", "normal", "poison", "psychic", "rock",
+  //               "steel", "water"]
+  const types = window.POKEMON_TYPES
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const errors = useSelector(state => state.ui.errors);

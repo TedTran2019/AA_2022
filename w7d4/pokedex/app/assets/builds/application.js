@@ -2234,9 +2234,12 @@ function PokemonForm() {
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState14 = _slicedToArray(_useState13, 2),
       moveTwo = _useState14[0],
-      setMoveTwo = _useState14[1];
+      setMoveTwo = _useState14[1]; // const types = ["bug", "dragon", "electric", "fighting", "fire", "flying", "ghost",
+  //               "grass", "ground", "ice", "normal", "poison", "psychic", "rock",
+  //               "steel", "water"]
 
-  var types = ["bug", "dragon", "electric", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"];
+
+  var types = window.POKEMON_TYPES;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
   var errors = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
