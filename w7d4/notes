@@ -9,3 +9,11 @@ raise/rescue vs throw/catch
 module extend(class methods) vs include(instance methods)
 
 link-> to, NavLink, Switch, withRouter, Redirect, advanced containers
+
+util -> does the POST request
+thunk action -> calls util, then dispatches actions (thru action creator) based on payload
+action is used by reducer (pure function, returns next state and that's it)
+
+dispatch returns whatever whatever the action/func it calls returns
+.then -> whatever => whatever.payload.thing
+async always returns a promise!

@@ -17,6 +17,7 @@ export default function PokemonDetail() {
 
   const pokemon = useSelector(state => state.entities.pokemon[params.pokemonId]);
   const moves = useSelector(state => Object.values(state.entities.moves));
+  const loading = useSelector(state => state.ui.loading['fetchOne']);
 
   const pokemonData = () => (
     <div>
@@ -30,9 +31,13 @@ export default function PokemonDetail() {
     </div>
   )
 
-  return (
-    <div>
-      { pokemon ? pokemonData() : <div>Loading...</div> }
+  const pokemonSpinner = () => (
+    <div id="loading-pokeball-container">
+      <div id="loading-pokeball"></div>
     </div>
+  )
+
+  return (
+    pokemon && !loading ? pokemonData() : pokemonSpinner()
   );
 }

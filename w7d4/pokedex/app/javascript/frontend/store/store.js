@@ -22,6 +22,7 @@ const uiReducer = combineReducers({
 export const store = configureStore({
   reducer: { 
     entities: entityReducer,
+    ui: uiReducer,
   },
   middleware: [thunk, logger],  
 })
