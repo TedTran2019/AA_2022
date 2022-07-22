@@ -19,6 +19,12 @@ export const errorsSlice = createSlice({
     clearUserErrors: (state) => {
       state['users'] = [];
     },
+    addBenchErrors: (state, action) => {
+      state['benches'] = action.payload;
+    },
+    clearBenchErrors: (state) => {
+      state['benches'] = [];
+    },
     clearAllErrors: (state) => {
       state['session'] = [];
       state['users'] = [];
@@ -30,6 +36,7 @@ export const errorsSlice = createSlice({
 export const { 
   addSessionErrors, clearSessionErrors, 
   addUserErrors, clearUserErrors,
+  addBenchErrors, clearBenchErrors,
   clearAllErrors,
 } = errorsSlice.actions;
 

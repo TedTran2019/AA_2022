@@ -10,6 +10,7 @@ import {
 import App from './app';
 import SessionForm from './components/session/session_form';
 import { ProtectedRoute } from './utils/route_util';
+import BenchIndex from './components/benches/bench_index';
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("root");
@@ -21,11 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
         <Routes>
           <Route path="/" element={<App />} >
             <Route path="/login" element={
-              <ProtectedRoute><SessionForm formType="login" /></ProtectedRoute>
+              <ProtectedRoute>
+                <SessionForm formType="login" />
+              </ProtectedRoute>
               } />
             <Route path="/signup" element={
-              <ProtectedRoute><SessionForm formType="signup" /></ProtectedRoute>
+              <ProtectedRoute>
+                <SessionForm formType="signup" />
+              </ProtectedRoute>
               } />
+            <Route end path="/" element={<BenchIndex />} />
           </Route>
         </Routes>
       </BrowserRouter>

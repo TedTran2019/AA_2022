@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import sessionReducer from '../components/session/session_slice';
 import userReducer from '../components/users/users_slice';
 import errorsReducer from '../components/errors/errors_slice';
+import benchesReducer from '../components/benches/benches_slice';
 
 let preloadedState = {}
 
@@ -18,6 +19,7 @@ if (window.currentUser) {
 
 const entityReducer = combineReducers({
   users: userReducer,
+  benches: benchesReducer
 })
 
 const uiReducer = combineReducers({
