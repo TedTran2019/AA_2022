@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import App from './app';
 import SessionForm from './components/session/session_form';
+import { ProtectedRoute } from './utils/route_util';
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("root");
@@ -19,8 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} >
-            <Route path="/login" element={<SessionForm formType="login" />} />
-            <Route path="/signup" element={<SessionForm formType="signup" />} />
+            <Route path="/login" element={
+              <ProtectedRoute><SessionForm formType="login" /></ProtectedRoute>
+              } />
+            <Route path="/signup" element={
+              <ProtectedRoute><SessionForm formType="signup" /></ProtectedRoute>
+              } />
           </Route>
         </Routes>
       </BrowserRouter>
