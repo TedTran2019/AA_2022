@@ -90,3 +90,6 @@
 
 # Anything ending with .map
 **/*.map
+
+# Figaro Secrets
+**/application.yml
