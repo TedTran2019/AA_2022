@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import QueryString from 'qs';
 import { getCSRFToken } from '../../utils/utils';
 import { addBenchErrors, clearBenchErrors } from '../errors/errors_slice';
+const qs = require('qs');
 
 export const createBench = createAsyncThunk(
   'api/benches/create',
@@ -32,9 +34,9 @@ export const createBench = createAsyncThunk(
 
 export const fetchAllBenches = createAsyncThunk(
   'api/benches/all',
-  async (arg, { dispatch, rejectWithValue }) => {
+  async (filters, { dispatch, rejectWithValue }) => {
     try {
-      const response = await fetch('/api/benches');
+      const response = await fetch('/api/benches' + '?' + qs.stringify(filters));
       if (response.ok) {
         const benches = await response.json();
         dispatch(clearBenchErrors());

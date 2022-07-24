@@ -1,16 +1,6 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllBenches } from './benches_slice';
+import React from 'react';
 
-export default function BenchIndex () {
-  const dispatch = useDispatch();
-  const benches = useSelector(state => Object.values(state.entities.benches));
-  console.log(benches);
-
-  useEffect(() => {
-    dispatch(fetchAllBenches());
-  }, []);
-
+export default function BenchIndex ({benches}) {
   return (
     <div>
       <h1>Benches</h1>

@@ -7,6 +7,7 @@ import sessionReducer from '../components/session/session_slice';
 import userReducer from '../components/users/users_slice';
 import errorsReducer from '../components/errors/errors_slice';
 import benchesReducer from '../components/benches/benches_slice';
+import filtersReducer from '../components/filters/filters_slice';
 
 let preloadedState = {}
 
@@ -24,6 +25,7 @@ const entityReducer = combineReducers({
 
 const uiReducer = combineReducers({
   errors: errorsReducer,
+  filters: filtersReducer,
 })
 
 export const store = configureStore({

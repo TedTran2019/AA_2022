@@ -10,7 +10,7 @@ import {
 import App from './app';
 import SessionForm from './components/session/session_form';
 import { ProtectedRoute } from './utils/route_util';
-import BenchIndex from './components/benches/bench_index';
+import Search from './components/benches/search';
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("root");
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <SessionForm formType="signup" />
               </ProtectedRoute>
               } />
-            <Route end path="/" element={<BenchIndex />} />
+            <Route end path="/" element={<Search />} />
           </Route>
         </Routes>
       </BrowserRouter>
