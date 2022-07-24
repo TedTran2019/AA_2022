@@ -11,6 +11,7 @@ import App from './app';
 import SessionForm from './components/session/session_form';
 import { ProtectedRoute } from './utils/route_util';
 import Search from './components/benches/search';
+import BenchForm from './components/benches/bench_form';
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("root");
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
               } />
             <Route end path="/" element={<Search />} />
           </Route>
+          <Route path="/benches/new" element={<BenchForm />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -10,7 +10,7 @@
 #  updated_at  :datetime         not null
 #
 class Bench < ApplicationRecord
-  validates :description, :lat, :lng, presence: true
+  validates :description, :lat, :lng, :seating, presence: true
 
   def self.in_bounds(bounds)
     return Bench.all if bounds.nil?
