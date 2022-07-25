@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MarkerManager from '../../utils/marker_manager';
 import { setBounds } from '../filters/filters_slice';
+import { useNavigate } from 'react-router-dom';
 
 // Using @googlemaps/react-wrapper here would make things really simple...
 export default function BenchMap({benches}) {
@@ -9,7 +10,8 @@ export default function BenchMap({benches}) {
   const [map, setMap] = useState();
   const [markerManager, setMarkerManager] = useState();
   const dispatch = useDispatch();
-  
+  const navigate = useNavigate();
+
   useEffect (() => {
     const mapOptions = {
       center: { lat: 37.7758, lng: -122.435 }, // SF
@@ -26,6 +28,11 @@ export default function BenchMap({benches}) {
           "southWest": { lat: south, lng: west }
         };
         dispatch(setBounds(bounds));
+      })
+      googMap.addListener('click', (e) => {
+        const lat = e.latLng.lat();
+        const lng = e.latLng.lng();
+        navigate('/benches/new', { state: { lat, lng } });
       })
     }
   }, [ref, map]);

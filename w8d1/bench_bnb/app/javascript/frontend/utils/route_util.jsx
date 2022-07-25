@@ -17,3 +17,18 @@ export const ProtectedRoute = ({ children }) => {
     return children;
   }
 }
+
+export const ProtectedRouteReverse = ({ children }) => {
+  const user = useSelector(state => state.session.id);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  })
+  
+  if (user) {
+    return children;
+  }
+}

@@ -1905,6 +1905,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function BenchForm() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     description: '',
@@ -1918,6 +1919,13 @@ function BenchForm() {
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setBench(_objectSpread(_objectSpread({}, bench), {}, {
+      lat: location.state.lat,
+      lng: location.state.lng
+    }));
+  }, []);
 
   var handleChange = function handleChange(e) {
     setBench(_objectSpread(_objectSpread({}, bench), {}, _defineProperty({}, e.target.name, e.target.value)));
@@ -1950,13 +1958,15 @@ function BenchForm() {
     value: bench['lat'],
     name: "lat",
     type: "number",
-    placeholder: "latitude"
+    placeholder: "latitude",
+    disabled: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     onChange: handleChange,
     value: bench['lng'],
     name: "lng",
     type: "number",
-    placeholder: "langitude"
+    placeholder: "langitude",
+    disabled: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     onChange: handleChange,
     value: bench['seating'],
@@ -2009,6 +2019,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _utils_marker_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/marker_manager */ "./app/javascript/frontend/utils/marker_manager.js");
 /* harmony import */ var _filters_filters_slice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../filters/filters_slice */ "./app/javascript/frontend/components/filters/filters_slice.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2020,6 +2031,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -2041,6 +2053,7 @@ function BenchMap(_ref) {
       setMarkerManager = _useState4[1];
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var mapOptions = {
       center: {
@@ -2073,6 +2086,16 @@ function BenchMap(_ref) {
           }
         };
         dispatch((0,_filters_filters_slice__WEBPACK_IMPORTED_MODULE_3__.setBounds)(bounds));
+      });
+      googMap.addListener('click', function (e) {
+        var lat = e.latLng.lat();
+        var lng = e.latLng.lng();
+        navigate('/benches/new', {
+          state: {
+            lat: lat,
+            lng: lng
+          }
+        });
       });
     }
   }, [ref, map]);
@@ -3077,7 +3100,8 @@ var MarkerManager = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProtectedRoute": () => (/* binding */ ProtectedRoute)
+/* harmony export */   "ProtectedRoute": () => (/* binding */ ProtectedRoute),
+/* harmony export */   "ProtectedRouteReverse": () => (/* binding */ ProtectedRouteReverse)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -3100,6 +3124,22 @@ var ProtectedRoute = function ProtectedRoute(_ref) {
   });
 
   if (!user) {
+    return children;
+  }
+};
+var ProtectedRouteReverse = function ProtectedRouteReverse(_ref2) {
+  var children = _ref2.children;
+  var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.session.id;
+  });
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!user) {
+      navigate('/');
+    }
+  });
+
+  if (user) {
     return children;
   }
 };
@@ -44984,7 +45024,7 @@ document.addEventListener("DOMContentLoaded", function () {
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_benches_search__WEBPACK_IMPORTED_MODULE_7__["default"], null)
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/benches/new",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_benches_bench_form__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_6__.ProtectedRouteReverse, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_benches_bench_form__WEBPACK_IMPORTED_MODULE_8__["default"], null))
   })))));
 });
 })();
