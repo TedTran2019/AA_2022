@@ -11,6 +11,8 @@ export default function BenchForm () {
     seating: '',
     lat: '',
     lng: '',
+    rating: '',
+    comment: ''
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,6 +47,8 @@ export default function BenchForm () {
         <input onChange={handleChange} value={bench['lat']} name="lat" type="number" placeholder="latitude" disabled />
         <input onChange={handleChange} value={bench['lng']} name="lng" type="number" placeholder="langitude" disabled />
         <input onChange={handleChange} value={bench['seating']} name="seating" type="number" placeholder="total seating" />
+        <input onChange={handleChange} min="1" max="5" value={bench['rating']} name="rating" type="number" placeholder="rating" />
+        <input onChange={handleChange} value={bench['comment']} name="comment" type="text" placeholder="comment" />
         <button>Create Bench</button>
       </form>
     </div>

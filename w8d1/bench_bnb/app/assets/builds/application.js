@@ -1911,7 +1911,9 @@ function BenchForm() {
     description: '',
     seating: '',
     lat: '',
-    lng: ''
+    lng: '',
+    rating: '',
+    comment: ''
   }),
       _useState2 = _slicedToArray(_useState, 2),
       bench = _useState2[0],
@@ -1973,6 +1975,20 @@ function BenchForm() {
     name: "seating",
     type: "number",
     placeholder: "total seating"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: handleChange,
+    min: "1",
+    max: "5",
+    value: bench['rating'],
+    name: "rating",
+    type: "number",
+    placeholder: "rating"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: handleChange,
+    value: bench['comment'],
+    name: "comment",
+    type: "text",
+    placeholder: "comment"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Create Bench")));
 }
 
@@ -2160,7 +2176,7 @@ function BenchShow() {
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "BenchShow"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_bench_map__WEBPACK_IMPORTED_MODULE_1__["default"], {
     benches: [bench]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, bench.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Lat: ", bench.lat), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Lng: ", bench.lng), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Seating: ", bench.seating))));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, bench.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Lat: ", bench.lat), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Lng: ", bench.lng), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Seating: ", bench.seating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Rating: ", bench.rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Comment: ", bench.comment))));
 }
 
 /***/ }),

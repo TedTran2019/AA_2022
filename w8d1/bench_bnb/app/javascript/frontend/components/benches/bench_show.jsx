@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BenchMap from './bench_map';
 import { useSelector } from 'react-redux';
-import { useParams } from  'react-router-dom';
+import { useParams, useNavigate } from  'react-router-dom';
 
 export default function BenchShow () {
   const { benchId } = useParams();
@@ -17,6 +17,8 @@ export default function BenchShow () {
           <li>Lat: {bench.lat}</li>
           <li>Lng: {bench.lng}</li>
           <li>Seating: {bench.seating}</li>
+          <li>Rating: {bench.rating}</li>
+          <li>Comment: {bench.comment}</li>
         </ul>
       </div>
     </div>

@@ -14,6 +14,11 @@ class Api::BenchesController < ApplicationController
     end
   end
 
+  def show
+    @bench = Bench.find(params[:id])
+    render :show
+  end
+
   private
 
   def filter_by_seats(benches)
@@ -23,6 +28,7 @@ class Api::BenchesController < ApplicationController
   end
 
   def bench_params
-    params.require(:bench).permit(:description, :lat, :lng, :seating, :max_seating, :min_seating) 
+    params.require(:bench).permit(:description, :lat, :lng, :seating, 
+      :rating, :comment, :max_seating, :min_seating)
   end
 end
