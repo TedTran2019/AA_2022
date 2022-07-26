@@ -1,0 +1,21 @@
+Flex Project: Clone of BaseCamp (Qwasar ver), Slack
+MVP: 4 key features, additional features == bonus
+
+Design Docs:
+- Schema (Database/Models)
+- State Shape (Normalization for Redux)
+- Routes, frontend/backend
+Github built-in project management -> Wiki
+Heroku -> MVP -> Schema -> State -> Frontend/Backend Routes -> Implementation timeline
+MVP checklist
+
+Change design if you change implementation!
+Create issue -> markdown for checklists -> label -> assign issue -> review -> merge -> close
+
+Production Readme
+app is/does -> link -> discussion of tech used -> delve deep into 2-3 features -> highlight best code
+
+Production Ready! 
+- Separate production and development tools in Gemfile and package.json
+
+Deploying to Heroku
