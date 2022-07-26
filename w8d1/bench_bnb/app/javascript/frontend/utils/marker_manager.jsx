@@ -1,7 +1,9 @@
+// Deleting marker also removes event listener if its garbage collected
 export default class MarkerManager {
-  constructor(map) {
+  constructor(map, navigate) {
     this.map = map;
     this.markers = {};
+    this.navigate = navigate;
   }
 
   updateMarkers(benches) {
@@ -30,6 +32,9 @@ export default class MarkerManager {
       title: bench.description
     })
     this.markers[bench.id] = marker;
+    marker.addListener('click', () => {
+      this.navigate(`/benches/${bench.id}`);
+    })
   }
 
   removeMarker(marker) {

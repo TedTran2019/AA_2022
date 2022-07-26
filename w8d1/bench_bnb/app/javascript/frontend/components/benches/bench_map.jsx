@@ -11,7 +11,7 @@ export default function BenchMap({benches}) {
   const [markerManager, setMarkerManager] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  console.log(benches);
   useEffect (() => {
     const mapOptions = {
       center: { lat: 37.7758, lng: -122.435 }, // SF
@@ -20,7 +20,8 @@ export default function BenchMap({benches}) {
     if (ref.current && !map) {
       let googMap = new google.maps.Map(ref.current, mapOptions);
       setMap(googMap);
-      setMarkerManager(new MarkerManager(googMap));
+      let manager = new MarkerManager(googMap, navigate);
+      setMarkerManager(manager);
       googMap.addListener('idle', () => {
         const { north, south, east, west } = googMap.getBounds().toJSON();
         const bounds = {
@@ -34,6 +35,13 @@ export default function BenchMap({benches}) {
         const lng = e.latLng.lng();
         navigate('/benches/new', { state: { lat, lng } });
       })
+      if (benches.length === 1) {
+        const { lat, lng } = benches[0];
+        mapOptions['center'] = { lat, lng };
+        mapOptions['gestureHandling'] = 'none';
+        googMap.setOptions(mapOptions);
+        manager.updateMarkers(benches);
+      }
     }
   }, [ref, map]);
 

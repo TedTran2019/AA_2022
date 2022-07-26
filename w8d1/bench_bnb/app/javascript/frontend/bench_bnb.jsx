@@ -12,6 +12,7 @@ import SessionForm from './components/session/session_form';
 import { ProtectedRoute, ProtectedRouteReverse } from './utils/route_util';
 import Search from './components/benches/search';
 import BenchForm from './components/benches/bench_form';
+import BenchShow from './components/benches/bench_show';
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("root");
@@ -34,11 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
               } />
             <Route end path="/" element={<Search />} />
           </Route>
-            <Route path="/benches/new" element={
-            <ProtectedRouteReverse>
-              <BenchForm />
-            </ProtectedRouteReverse>
-            } />
+          <Route path="/benches/new" element={
+          <ProtectedRouteReverse>
+            <BenchForm />
+          </ProtectedRouteReverse>
+          } />
+          <Route path="/benches/:benchId" element={<BenchShow />} />
         </Routes>
       </BrowserRouter>
     </Provider>

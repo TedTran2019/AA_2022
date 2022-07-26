@@ -1991,13 +1991,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 
 function BenchIndex(_ref) {
   var benches = _ref.benches;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Benches"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, benches.map(function (bench) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
       key: bench.id
-    }, bench.description);
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      to: "benches/".concat(bench.id)
+    }, bench.description));
   })));
 }
 
@@ -2017,7 +2021,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _utils_marker_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/marker_manager */ "./app/javascript/frontend/utils/marker_manager.js");
+/* harmony import */ var _utils_marker_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/marker_manager */ "./app/javascript/frontend/utils/marker_manager.jsx");
 /* harmony import */ var _filters_filters_slice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../filters/filters_slice */ "./app/javascript/frontend/components/filters/filters_slice.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -2054,6 +2058,7 @@ function BenchMap(_ref) {
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  console.log(benches);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var mapOptions = {
       center: {
@@ -2067,7 +2072,8 @@ function BenchMap(_ref) {
     if (ref.current && !map) {
       var googMap = new google.maps.Map(ref.current, mapOptions);
       setMap(googMap);
-      setMarkerManager(new _utils_marker_manager__WEBPACK_IMPORTED_MODULE_2__["default"](googMap));
+      var manager = new _utils_marker_manager__WEBPACK_IMPORTED_MODULE_2__["default"](googMap, navigate);
+      setMarkerManager(manager);
       googMap.addListener('idle', function () {
         var _googMap$getBounds$to = googMap.getBounds().toJSON(),
             north = _googMap$getBounds$to.north,
@@ -2097,6 +2103,19 @@ function BenchMap(_ref) {
           }
         });
       });
+
+      if (benches.length === 1) {
+        var _benches$ = benches[0],
+            lat = _benches$.lat,
+            lng = _benches$.lng;
+        mapOptions['center'] = {
+          lat: lat,
+          lng: lng
+        };
+        mapOptions['gestureHandling'] = 'none';
+        googMap.setOptions(mapOptions);
+        manager.updateMarkers(benches);
+      }
     }
   }, [ref, map]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -2108,6 +2127,40 @@ function BenchMap(_ref) {
     id: "map",
     ref: ref
   });
+}
+
+/***/ }),
+
+/***/ "./app/javascript/frontend/components/benches/bench_show.jsx":
+/*!*******************************************************************!*\
+  !*** ./app/javascript/frontend/components/benches/bench_show.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ BenchShow)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _bench_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bench_map */ "./app/javascript/frontend/components/benches/bench_map.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+
+
+
+
+function BenchShow() {
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
+      benchId = _useParams.benchId;
+
+  var bench = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
+    return state.entities.benches[benchId];
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "BenchShow"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_bench_map__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    benches: [bench]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, bench.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Lat: ", bench.lat), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Lng: ", bench.lng), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Seating: ", bench.seating))));
 }
 
 /***/ }),
@@ -3113,10 +3166,10 @@ var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_7__.configureStore)({
 
 /***/ }),
 
-/***/ "./app/javascript/frontend/utils/marker_manager.js":
-/*!*********************************************************!*\
-  !*** ./app/javascript/frontend/utils/marker_manager.js ***!
-  \*********************************************************/
+/***/ "./app/javascript/frontend/utils/marker_manager.jsx":
+/*!**********************************************************!*\
+  !*** ./app/javascript/frontend/utils/marker_manager.jsx ***!
+  \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3130,12 +3183,14 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
+// Deleting marker also removes event listener if its garbage collected
 var MarkerManager = /*#__PURE__*/function () {
-  function MarkerManager(map) {
+  function MarkerManager(map, navigate) {
     _classCallCheck(this, MarkerManager);
 
     this.map = map;
     this.markers = {};
+    this.navigate = navigate;
   }
 
   _createClass(MarkerManager, [{
@@ -3165,6 +3220,8 @@ var MarkerManager = /*#__PURE__*/function () {
   }, {
     key: "createMarkerFromBench",
     value: function createMarkerFromBench(bench) {
+      var _this2 = this;
+
       var marker = new google.maps.Marker({
         position: {
           lat: bench.lat,
@@ -3174,6 +3231,9 @@ var MarkerManager = /*#__PURE__*/function () {
         title: bench.description
       });
       this.markers[bench.id] = marker;
+      marker.addListener('click', function () {
+        _this2.navigate("/benches/".concat(bench.id));
+      });
     }
   }, {
     key: "removeMarker",
@@ -45080,13 +45140,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./app/javascript/frontend/store/store.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app */ "./app/javascript/frontend/app.jsx");
 /* harmony import */ var _components_session_session_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/session/session_form */ "./app/javascript/frontend/components/session/session_form.jsx");
 /* harmony import */ var _utils_route_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/route_util */ "./app/javascript/frontend/utils/route_util.jsx");
 /* harmony import */ var _components_benches_search__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/benches/search */ "./app/javascript/frontend/components/benches/search.jsx");
 /* harmony import */ var _components_benches_bench_form__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/benches/bench_form */ "./app/javascript/frontend/components/benches/bench_form.jsx");
+/* harmony import */ var _components_benches_bench_show__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/benches/bench_show */ "./app/javascript/frontend/components/benches/bench_show.jsx");
+
 
 
 
@@ -45103,26 +45165,29 @@ document.addEventListener("DOMContentLoaded", function () {
   window.store = _store_store__WEBPACK_IMPORTED_MODULE_2__.store;
   root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_3__.Provider, {
     store: _store_store__WEBPACK_IMPORTED_MODULE_2__.store
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_app__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_6__.ProtectedRoute, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_session_session_form__WEBPACK_IMPORTED_MODULE_5__["default"], {
       formType: "login"
     }))
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/signup",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_6__.ProtectedRoute, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_session_session_form__WEBPACK_IMPORTED_MODULE_5__["default"], {
       formType: "signup"
     }))
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     end: true,
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_benches_search__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/benches/new",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_6__.ProtectedRouteReverse, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_benches_bench_form__WEBPACK_IMPORTED_MODULE_8__["default"], null))
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+    path: "/benches/:benchId",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_benches_bench_show__WEBPACK_IMPORTED_MODULE_9__["default"], null)
   })))));
 });
 })();
