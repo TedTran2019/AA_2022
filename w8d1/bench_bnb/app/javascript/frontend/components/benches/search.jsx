@@ -4,6 +4,7 @@ import BenchIndex from './bench_index';
 import { fetchAllBenches } from './benches_slice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import FilterForm from '../filters/filter_form';
 
 export default function Search () {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export default function Search () {
     <div>
       <BenchMap benches={benches} />
       <BenchIndex benches={benches} />
+      <FilterForm />
     </div>
   );
 }

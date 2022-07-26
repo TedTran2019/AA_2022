@@ -1,6 +1,7 @@
 class Api::BenchesController < ApplicationController
   def index
     @benches = Bench.in_bounds(params[:bounds])
+    @benches = filter_by_seats(@benches)
     render :index
   end
 
@@ -15,7 +16,13 @@ class Api::BenchesController < ApplicationController
 
   private
 
+  def filter_by_seats(benches)
+    benches = benches.where("seating >= ?", params[:min_seating]) if params[:min_seating]
+    benches = benches.where("seating <= ?", params[:max_seating]) if params[:max_seating]
+    benches
+  end
+
   def bench_params
-    params.require(:bench).permit(:description, :lat, :lng, :seating)
+    params.require(:bench).permit(:description, :lat, :lng, :seating, :max_seating, :min_seating) 
   end
 end

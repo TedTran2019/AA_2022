@@ -64,7 +64,7 @@ export const benchesSlice = createSlice({
     [fetchAllBenches.fulfilled]: (state, action) => {
       state = action.payload;
       return state;
-    }
+    },
   }
 })
 

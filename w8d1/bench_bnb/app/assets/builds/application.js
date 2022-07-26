@@ -2313,6 +2313,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bench_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bench_index */ "./app/javascript/frontend/components/benches/bench_index.jsx");
 /* harmony import */ var _benches_slice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./benches_slice */ "./app/javascript/frontend/components/benches/benches_slice.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _filters_filter_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../filters/filter_form */ "./app/javascript/frontend/components/filters/filter_form.jsx");
+
 
 
 
@@ -2334,7 +2336,7 @@ function Search() {
     benches: benches
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_bench_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
     benches: benches
-  }));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_filters_filter_form__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 }
 
 /***/ }),
@@ -2405,6 +2407,89 @@ var _errorsSlice$actions = errorsSlice.actions,
 
 /***/ }),
 
+/***/ "./app/javascript/frontend/components/filters/filter_form.jsx":
+/*!********************************************************************!*\
+  !*** ./app/javascript/frontend/components/filters/filter_form.jsx ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ FilterForm)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _filters_slice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filters_slice */ "./app/javascript/frontend/components/filters/filters_slice.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function FilterForm() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+      _useState2 = _slicedToArray(_useState, 2),
+      min = _useState2[0],
+      setMin = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(10),
+      _useState4 = _slicedToArray(_useState3, 2),
+      max = _useState4[0],
+      setMax = _useState4[1];
+
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  var handleMin = function handleMin(e) {
+    var min = e.target.value;
+
+    if (min !== '') {
+      var _min = parseInt(e.target.value, 10);
+
+      dispatch((0,_filters_slice__WEBPACK_IMPORTED_MODULE_2__.setMinSeating)(_min));
+    }
+
+    setMin(min);
+  };
+
+  var handleMax = function handleMax(e) {
+    var max = e.target.value;
+
+    if (max !== '') {
+      var _max = parseInt(e.target.value, 10);
+
+      dispatch((0,_filters_slice__WEBPACK_IMPORTED_MODULE_2__.setMaxSeating)(_max));
+    }
+
+    setMax(max);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "FilterForm"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: handleMin,
+    value: min,
+    type: "number",
+    placeholder: "min seating"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: handleMax,
+    value: max,
+    type: "number",
+    placeholder: "max seating"
+  })));
+}
+
+/***/ }),
+
 /***/ "./app/javascript/frontend/components/filters/filters_slice.jsx":
 /*!**********************************************************************!*\
   !*** ./app/javascript/frontend/components/filters/filters_slice.jsx ***!
@@ -2416,23 +2501,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "filtersSlice": () => (/* binding */ filtersSlice),
-/* harmony export */   "setBounds": () => (/* binding */ setBounds)
+/* harmony export */   "setBounds": () => (/* binding */ setBounds),
+/* harmony export */   "setMaxSeating": () => (/* binding */ setMaxSeating),
+/* harmony export */   "setMinSeating": () => (/* binding */ setMinSeating)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 
 var filtersSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: 'filters',
   initialState: {
-    bounds: {}
+    bounds: {},
+    min_seating: 1,
+    max_seating: 10
   },
   reducers: {
     setBounds: function setBounds(state, action) {
       state.bounds = action.payload;
+    },
+    setMinSeating: function setMinSeating(state, action) {
+      state.min_seating = action.payload;
+    },
+    setMaxSeating: function setMaxSeating(state, action) {
+      state.max_seating = action.payload;
     }
   },
   extraReducers: {}
 });
-var setBounds = filtersSlice.actions.setBounds;
+var _filtersSlice$actions = filtersSlice.actions,
+    setBounds = _filtersSlice$actions.setBounds,
+    setMinSeating = _filtersSlice$actions.setMinSeating,
+    setMaxSeating = _filtersSlice$actions.setMaxSeating;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (filtersSlice.reducer);
 
