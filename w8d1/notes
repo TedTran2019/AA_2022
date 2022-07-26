@@ -1,3 +1,6 @@
 Google Maps API!
 React Hooks
 Figaro -> Hiding API keys
+
+Skipped part 14 for BenchBnb, aka setting up AWS w/ ActiveStorage to let users 
+upload images that we can display
