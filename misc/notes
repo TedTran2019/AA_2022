@@ -120,6 +120,62 @@ Caching w/ Redis in Rails
   - Rails.cache = common interface for interacting w/ various kv stores
   - Cache entry, fresh when up-to-date and stale otherwise (Sometimes a lil stale ok)
   - Can use expires_in to decide when to recalculate by time 
+
+AWS vs Heroku
+  - AW'S Elastic Computer Cloud(EC2) is IaaS vs Heroku/AWS Elastic Beanstalkis PaaS
+  - Heroku is platform as service: OS, servers, development instruments, many ad ons
+  - Heroku is good for fast MVP, dont' need to understand infrastructure management
+  - AWS EC2: setup and manage infrastructure, understand Unix Admin and DevOps
+  - AWS ElasticBeanstalk: like Heroku
+
+OmniAuth
+  - Standardizes auth via multiple providers/strategies
+  - Install devise and omniauth + supporting provider/strategy gems, uuidtools
+  - Authentication: who are you, Authorization: may you access
+  - Figaro or similar to set and use ENV variables
+CanCan
+  - Is dead, use Pundit. It's a user authorization library to control resource access in one spot
+CSS - Vanilla CSS
+  - Selectors
+    - relational, pseudo, pseudo-content
+  - Specificity 
+  - Content layout, box models, display properties, position,  CSS reset, media queries, viewport tag
+  - float/clearfix old method of creating grid layouts
+  - tips like decouple styling from HTML, OOCSS, Modernizr, Initialzr, BEM
+    - OOCSS: separate structure/skin, container/content. New pages shouldn't need new CSS
+    - BEM: Block, element, modifier
+    - Modernizr deals w/ browser diffs
+    - Initialzr: HTML boilerplate generator
+Sass
+  - nested selectors, variables, mixins
+Autoprefixer
+  - Automatically prefix vendor prefixes when it's needed. Forget about it.
+Additional Styling Resources: https://medium.com/@erikdkennedy
+```
+  Light comes from the sky
+  Black and white first
+  Double your whitespace
+  Learn the methods of overlaying text on images
+  Make text pop— and un-pop
+  Only use good fonts
+  Steal like an artist - https://dribbble.com/
+```
+https://open.appacademy.io/learn/full-stack-online/full-stack-project/additional-styling-resources
+
+SendGrid
+  - Free service to send email for application
+  - Heroku sendgrid docs, ActionMailer usage
+
+Delayed Job vs Sidekiq
+   - Background jobs for Rails!
+Kaminari
+  - Pagination gem
+Heroku Task Scheduler
+  - save yo dyno hours
+Fixing Git Commit Authorship
+  - For non-AA open students.
+Additional Resources:
+  - https://open.appacademy.io/learn/full-stack-online/full-stack-project/compiled-list-of-additional-resources
 ------------
 Keeping things simple in style
 For all projects: header font, body font
