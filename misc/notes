@@ -19,3 +19,108 @@ Production Ready!
 - Separate production and development tools in Gemfile and package.json
 
 Deploying to Heroku
+- Remove debugging
+- add engines/scripts to package.json and bundle install/npm install
+- DON'T include node_modules, bundle.js, and public/assets when pushing to heroku
+- buildpacks in Heroku, node b4 ruby
+- push to Heroku and setup DB
+- migrate static assets to asset pipeline (image_url, asset_url to access)
+- common errors and how to deal with them
+- Heroku console commands like heroku logs -t, heroku run <command>, etc
+
+Asset Pipeline
+- Precompiles Typescript -> JS, Sass->CSS (Use @import w/ Sass), etc
+- All JS into application.js and all CSS into application.css
+- Heroku automatically rails asset:precompile when deploy
+- don't check in compiled assets to git
+- use stylesheet_link_tag, javascript_include_tag, etc instead of hard-code links due to fingerprinting
+- Server configuration (not Rails) to set expiration date on JS/CSS so not requested on every page load
+
+Storing API keys securely
+- Master.key file in Config, can tell Heroku about it
+- Add to encrypted credentials.yml file which is pushed to Github/Heroku
+
+Active Storage + AWS S3 Hosting
+- Set up AWS. Account -> Buckets -> User -> Security credentials -> Security Policy -> Bucket Policy
+- Set up ActiveStorage (aws-sdk-s3), rails active_storage:install
+- rails credentials:edit
+- add to storage.yml, development.rb, production.rb
+- ActiveStorage w/ Heroku. Heroku can only unencrypt credentials.yml.enc if it has master key. heroku config:set RAILS_MASTER_KEY=<master key>
+- FileReader obj, FormData obj (Javascript)
+- Seeding w/ ActiveStorage using open-uri gem to create File from url
+- multiple files handling
+
+Redux Dev Tools
+- Make sure to run site from server to make it work
+- (npm install -g http-server, http-server, webpack --watch --mode=development) if plain old index.html
+
+Performance and Scaling
+- React
+  - Perf obj
+  - Integrate react-router w/ webpack for code splitting
+  - react-virtualized, aka windowing/rendering separation
+- Rails
+  - N+1 queries
+  - Caching with Redis
+https://pagespeed.web.dev/
+http://jankfree.org/
+https://developer.yahoo.com/performance/rules.html
+
+Testing
+  - TDD
+  - RSpec -> Mock, Doubles
+  - Rails integration tests, models, controllers, FactoryBot/Faker
+  - Frontend: Jest, Enzyme
+
+Accessibility
+  - https://teachaccess.github.io/tutorial/
+  - https://www.wuhcag.com/wcag-checklist/
+
+Domains
+  - nslookup/dig -> IP address of where Heroku app is served
+  - set Domain Address to that IP
+  - add domain on Heroku
+  - register domain after purchasing
+  - HTTPS
+
+Web Architecture
+  1. Proxy Web Server (reads user request and chooses application server to process it, aka does load balancing)
+  2. Application Server (like Puma(Multithreaded > Webrick's single(Can scale w/ multiple instances)), runs Rails)
+    - MRI (global interpreter lock) kills concurrency in Rals. However, all waiting for IO can be done in parallel still.
+  3. Database Server 
+    - Master-slave w/ read-slaves to parallelize the read load
+    - Reactor pattern? -> Make DB query, yield control back to EventMachine w/ a callback that has it resume processing the request when DB results arrive
+
+Modal
+   - "graphical element with which the user must interact before being able to use any other part of your application"
+   - React modal component w/ content in Redux, can close/open modal after connecting to store
+   - stop propagation of click event, think about it
+
+Caching in Rails
+  - Browser
+    - Assets: Tell Rails to serve static assets, then set static cache control to 1 year
+    - Can look at network requests in dev tools to see if it's (from cache)
+  - Pages
+    - expires_in in controller, sets a header named cache-control
+    - Can see in network, response headers. 
+    - Only works for static pages
+  - Page Caching
+    - caches_action aka caches until sweeper invalidates
+    - cache_sweeper :etc_sweeper, observe Etc, expire_cache_for when DB changes
+  - Query Caching
+    - Queries run within a single request cycle are cached
+    - Memcached: cache server, all Rails servers connect to it. Store cached data in memory.
+      - Why use it? Think if 4 Rails servers, each has 1/4th of RAM to cache with
+https://open.appacademy.io/learn/full-stack-online/full-stack-project/caching-in-rails
+  - Lots of references. The broadcastingadam.com link to advanced caching revised leads to a weird 2000s Chinese porn website.
+
+Caching w/ Redis in Rails
+  - Queries are slow, so cache em'! (Can use em' for any long calculation)
+  - KV stores for caching, like Redis
+  - Rails.cache = common interface for interacting w/ various kv stores
+  - Cache entry, fresh when up-to-date and stale otherwise (Sometimes a lil stale ok)
+  - Can use expires_in to decide when to recalculate by time 
+------------
+Keeping things simple in style
+For all projects: header font, body font
+4 + shades colors: background, main, accent, text:
