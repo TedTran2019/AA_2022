@@ -43,6 +43,32 @@ Mega Repo of AA. I went through all of App Academy Open on my own to challenge m
 - Reddit clone
 - Rails-lite
 
+## Javascript
+- Reversi
+- Towers of Hanoi
+- TicTacToe
+- Asteroids
+- jQuery TicTacToe
+- jQuery Towers of Hanoi
+- AJAX Twitter
+- jQuery-lite
+- Gmail
 
+## React
+- Calculator
+- Widgets
+- Minesweeper
+- Job Listing
+- Todos app
+- Pokedex
+- BenchBnB
 
+## Full Stack Project
 
+## MERN
+
+## Data Structures and Algorithms
+
+## Docker
+
+## GraphQL
