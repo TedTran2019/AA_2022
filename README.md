@@ -1,5 +1,7 @@
 # AA_2022
-Mega Repo of AA. I went through all of App Academy Open on my own to challenge myself and gain useful skills.
+Mega Repo of AA. I went through all of App Academy Open on my own to challenge myself and gain useful skills. 
+
+A lot of the information was outdated, so I did a lot of projects twice; once doing it the old way and another using modern best practices. It's pretty cool to see the evolution of technology and I've gained a profound appreciation for the abstractions that allow programmers to solve problems much easier. 
 
 # Projects in each section of App Academy (Not including exercises)
 
@@ -64,11 +66,10 @@ Mega Repo of AA. I went through all of App Academy Open on my own to challenge m
 - BenchBnB
 
 ## Full Stack Project
+- There's no given projects here. You simply choose a popular website/application to clone.
+- Basecamp
 
 ## MERN
-
 ## Data Structures and Algorithms
-
 ## Docker
-
 ## GraphQL
